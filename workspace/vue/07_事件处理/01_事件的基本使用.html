@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_事件的基本使用</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <button v-on:click="showInfo1">点击触发事件1</button>
+      <button @click="showInfo2($event,66)">点击触发事件2</button
+      ><!--v-on:可以用@代替-->
+    </div>
+    <script>
+      const vm = new Vue({
+        el: '#root',
+        data: {},
+        methods: {
+          showInfo1(event) {
+            alert('触发事件1');
+            console.log(event);
+          },
+          showInfo2(event, a) {
+            alert('触发事件2');
+            console.log(event, a);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

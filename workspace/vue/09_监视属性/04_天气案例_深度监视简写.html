@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>天气案例_简写监视</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2>今天的天气很{{info}}</h2>
+      <button @click="demo">点击</button>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          bol: false,
+        },
+        computed: {
+          info() {
+            return this.bol ? '炎热' : '凉爽';
+          },
+        },
+        methods: {
+          demo() {
+            this.bol = !this.bol;
+          },
+        },
+        //正常写法
+        // watch: {
+        //   bol: {
+        //     deep:true,
+        //     immediate: true,
+        //     handler(newValue, oldValue) {
+        //       console.log('bol发生改变', newValue, oldValue);
+        //     },
+        //   },
+        // },
+
+        // 第一种简写
+        // watch: {
+        //   bol(newValue, oldValue) {
+        //     console.log('bol发生改变', newValue, oldValue);
+        //   },
+        // },
+      });
+
+      // $watch正常
+      // vm.$watch('bol', {
+      //   deep: true,
+      //   immediate: true,
+      //   handler(newValue, oldValue) {
+      //     console.log('bol发生改变', newValue, oldValue);
+      //   },
+      // });
+
+      vm.$watch('bol', function (newValue, oldValue) {
+        console.log('bol发生改变', newValue, oldValue);
+      });
+    </script>
+  </body>
+</html>

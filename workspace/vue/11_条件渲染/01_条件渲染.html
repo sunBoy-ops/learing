@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>条件渲染</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 条件渲染:
+      1.v-if
+        写法:
+          (1).v-if="表达式"
+          (2).v-else-if="表达式”
+          (3).v-else="表达式”
+            适用于:切换频率较低的场景。
+            特点:不展示的DON元素直接被移除。
+            注意: v-if可以和:v-else-if、v-else一起使用，但要求结构不能被"“打断”。
+      2.v-show
+        写法: v-show="表达式”
+        适用于:切换频率较高的场景。
+        特点:不展示的DOM元素未被移除,仅仅是使用样式隐藏掉
+      3.备注:使用v-if的时，元素可能无法获取到，而使用v-show一定可以获取到。 -->
+
+    <div id="root">
+      <!-- v-show条件渲染 -->
+      <h2 v-show="1 === 1">v-show</h2>
+      <h2 v-show="a">v-show</h2>
+      <!-- v-if条件渲染 -->
+      <h2 v-if="1 === 1">v-if</h2>
+      <h2 v-if="a">v-if</h2>
+      <!-- v-else-if -->
+      <h2 v-if="n === 1">v-if</h2>
+      <h2 v-else-if="n===2">v-else-if</h2>
+      <!-- 需要连续 不能中断 -->
+      <!-- <div>@</div> -->
+      <h2 v-else-if="n===3">v-else-if</h2>
+      <h2 v-else>v-else</h2>
+
+      <h2>{{n}}</h2>
+      <button @click="n++">n++</button>
+
+      <!-- 管理多个元素的条件渲染 不影响结构 -->
+      <template v-show="1===1">
+        <h2>1</h2>
+        <h2>2</h2>
+        <h2>3</h2>
+      </template>
+    </div>
+    <script>
+      new Vue({
+        el: '#root',
+        data: {
+          a: true,
+          n: 0,
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

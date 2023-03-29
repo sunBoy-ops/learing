@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>姓名案例_计算属性实现</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      姓：<input type="text" v-model="firstname" /><br />
+      名：<input type="text" v-model="lastname" /><br />
+      全名：<span>{{fullname}}</span>
+    </div>
+    <script>
+      Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          firstname: '张',
+          lastname: '三',
+        },
+        // methods: {
+        //   fullname() {
+        //     return this.firstname + '-' + this.lastname;
+        //   },
+        // 计算属性 和data函数区别：计算属性有缓存 多次调用fullname，实际只调用一次函数
+        computed: {
+          fullname: {
+            // 当读取fullname时调用getter，且返回值就是fullname的值
+            // get什么时候调用？1.初次调用2.引用的属性发生改变时调用
+            get() {
+              console.log('读取fullname');
+              // fullname中的getter访问不到data中的firstname和lastname，但都是vm中的属性
+              return this.firstname + '-' + this.lastname;
+            },
+            // 什么时候调用setter 修改fullname
+            set(value) {
+              console.log('调用setter');
+              const arr = value.split('-');
+              this.firstname = arr[0];
+              this.lastname = arr[1];
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

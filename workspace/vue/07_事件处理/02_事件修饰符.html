@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_事件修饰符</title>
+    <script src="../js/vue.js"></script>
+    <style>
+      * {
+        margin-top: 20px;
+      }
+      .box1 {
+        height: 100px;
+        background-color: skyblue;
+        overflow: hidden;
+      }
+      .box2 {
+        height: 50px;
+        background-color: burlywood;
+      }
+      .list {
+        width: 200px;
+        height: 200px;
+        overflow: auto;
+      }
+      .list li {
+        width: 200px;
+        height: 100px;
+        background-color: burlywood;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+    Vue中的事件修饰符：
+      1.prevent：阻止默认事件（常用）
+      2.stop：阻止事件冒泡（常用）
+      3.once：事件只触发一次（常用）
+      4.capture：使用事件的捕获模式
+      5.self：只有event。target是当前操作的元素时才触发事件
+      6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕
+  -->
+    <div id="root">
+      <!-- 1.prevent：阻止默认事件（常用）阻止a链接跳转 -->
+      <a href="http://www.baidu.com" @click.prevent="showInfo">a链接</a>
+      <!-- 2.stop：阻止事件冒泡（常用） -->
+      <div class="box1" @click="showInfo">
+        <div class="box2" @click.stop="showInfo"></div>
+      </div>
+      <!-- 3.once：事件只触发一次（常用） -->
+      <button @click.once="showInfo">点我提示信息</button>
+      <!-- 4.capture：使用事件的捕获模式 -->
+      <div class="box1" @click.capture="showMsg1">
+        <div class="box2" @click="showMsg2"></div>
+      </div>
+      <!-- 5.self：只有event。target是当前操作的元素时才触发事件 -->
+      <div class="box1" @click.self="showInfo">
+        <div class="box2" @click="showInfo"></div>
+      </div>
+      <!-- 6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+      <ul class="list" @wheel.passive="demo">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+      new Vue({
+        el: '#root',
+        data: {},
+        methods: {
+          showInfo() {
+            console.log('触发事件');
+          },
+          showMsg1() {
+            console.log(1);
+          },
+          showMsg2() {
+            console.log(2);
+          },
+          demo() {
+            for (let i = 0; i < 100000; i++) {
+              console.log('#');
+            }
+            console.log('累坏了');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
