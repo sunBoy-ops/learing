@@ -1,10 +1,10 @@
 <template>
   <li>
     <label>
-      <input type="checkbox" :checked="todoObj.done" />
+      <input type="checkbox" :checked="todoObj.done" @change="handleCheck(todoObj.id)" />
       <span>{{ todoObj.title }}</span>
     </label>
-    <button class="btn btn-danger" style="display: none">删除</button>
+    <button class="btn btn-danger" @click="handleDelect(todoObj.id)">删除</button>
   </li>
 </template>
 
@@ -12,7 +12,7 @@
 // 导入其他文件例如：import 《组件名称》 from '《组件路径》'
 export default {
   name: 'MyItem',
-  props: ['todoObj'],
+  props: ['todoObj', 'checkTodo', 'delectTodo'],
   // import引入的组件需要注入到对象中才能使用
   components: {},
   data() {
@@ -23,7 +23,19 @@ export default {
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
-  methods: {},
+  methods: {
+    // 复选框的选中和取消
+    handleCheck(id) {
+      // 通知App组件将对应的todo对象的done值取反
+      this.checkTodo(id);
+    },
+    // 删除按钮
+    handleDelect(id) {
+      if (confirm('确定删除吗?')) {
+        this.delectTodo(id);
+      }
+    },
+  },
 };
 </script>
 
@@ -61,5 +73,11 @@ li:before {
 
 li:last-child {
   border-bottom: none;
+}
+li:hover {
+  background-color: #ddd;
+}
+li:hover button {
+  display: block;
 }
 </style>

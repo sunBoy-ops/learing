@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>localStrorage</title>
+  </head>
+  <body>
+    <h2>localStrorage</h2>
+    <button onclick="saveData()">添加一个浏览器缓存</button>
+    <button onclick="readData()">读取一个浏览器缓存</button>
+    <button onclick="delectData()">删除一个浏览器缓存</button>
+    <button onclick="clearData()">清空浏览器缓存</button>
+  </body>
+  <script>
+    const p = { name: '张三', age: 18 };
+    function saveData() {
+      localStorage.setItem('msg', 'hello');
+      localStorage.setItem('msg2', 666);
+      localStorage.setItem('person', JSON.stringify(p));
+    }
+    function readData() {
+      console.log(localStorage.getItem('msg'));
+      console.log(localStorage.getItem('msg2'));
+      const result = localStorage.getItem('person');
+      console.log(JSON.parse(result));
+    }
+    function delectData() {
+      localStorage.removeItem('msg');
+    }
+    function clearData() {
+      localStorage.clear();
+    }
+  </script>
+</html>

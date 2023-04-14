@@ -19,4 +19,5 @@ import App from './App.vue';
 */
 
 // 创建Vue实例 将App组件放入容器中
+createApp(App).config.productionTip = false;
 createApp(App).mount('#app');

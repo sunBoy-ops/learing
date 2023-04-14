@@ -1,30 +1,30 @@
 <template>
   <div class="todo-header">
-    <input type="text" placeholder="请输入你的任务名称，按回车键确认" />
+    <input type="text" placeholder="请输入你的任务名称，按回车键确认" v-model="addTitle" @keydown.enter="add" />
   </div>
 </template>
 
 <script>
 // 导入其他文件例如：import 《组件名称》 from '《组件路径》'
+import { nanoid } from 'nanoid';
 export default {
   name: 'MyHeader',
-  props: {
-    title: {
-      type: String,
-      default: '',
-    },
-  },
-  // import引入的组件需要注入到对象中才能使用
-  components: {},
+  props: ['addTodo'],
   data() {
     // 这里存放数据
-    return {};
+    return {
+      addTitle: '',
+    };
   },
-  // 生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
-  // 生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
-  methods: {},
+  methods: {
+    add() {
+      if (this.addTitle) {
+        const todoObj = { id: nanoid(), title: this.addTitle, done: false };
+        this.addTodo(todoObj);
+      }
+      this.addTitle = '';
+    },
+  },
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <ul class="todo-main">
-    <MyItem v-for="todo in todos" :key="todo.id" :todoObj="todo"></MyItem>
+    <MyItem v-for="todo in todos" :key="todo.id" :todoObj="todo" :checkTodo="checkTodo" :delectTodo="delectTodo"></MyItem>
   </ul>
 </template>
 
@@ -13,15 +13,10 @@ export default {
   components: {
     MyItem,
   },
+  props: ['todos', 'checkTodo','delectTodo'],
   data() {
     // 这里存放数据
-    return {
-      todos: [
-        { id: '001', title: '吃饭', done: true },
-        { id: '002', title: '睡觉', done: false },
-        { id: '003', title: '打游戏', done: false },
-      ],
-    };
+    return {};
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
