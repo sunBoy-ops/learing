@@ -57,6 +57,7 @@ export default {
         return this.doneTotal === this.total && this.total > 0;
       },
       set(value) {
+        console.log(value);
         this.checkTodos(value);
       },
     },
