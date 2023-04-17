@@ -1,6 +1,9 @@
 <template>
   <ul class="todo-main">
-    <MyItem v-for="todo in todos" :key="todo.id" :todoObj="todo" ></MyItem>
+    <!-- appear 初始化就使用属性 -->
+    <transition-group name="todo" appear>
+      <MyItem v-for="todo in todos" :key="todo.id" :todoObj="todo"></MyItem>
+    </transition-group>
   </ul>
 </template>
 
@@ -42,5 +45,21 @@ export default {
   border-radius: 2px;
   padding-left: 5px;
   margin-top: 10px;
+}
+
+/* item组件中添加增加、删除的动画 */
+.todo-enter-active {
+  animation: todo 0.5s linear;
+}
+.todo-leave-active {
+  animation: todo 0.5s linear reverse;
+}
+@keyframes todo {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 </style>

@@ -1,0 +1,36 @@
+<template>
+  <section class="jumbotron">
+    <h3 class="jumbotron-heading">Search Github Users</h3>
+    <div>
+      <input type="text" placeholder="enter the name you search" v-model="keyUser" />&nbsp;
+      <button @click="getUsers">Search</button>
+    </div>
+  </section>
+</template>
+
+<script>
+import axios from 'axios';
+export default {
+  name: 'MySearch',
+  data() {
+    return {
+      keyUser: '',
+    };
+  },
+  methods: {
+    getUsers() {
+      this.$bus.$emit('getUpdateUsers', { isFirst: false, isLoading: true, errorMsg: '', users: [] });
+      axios.get(`https://api.github.com/search/users?q=${this.keyUser}`).then(
+        (response) => {
+          console.log('请求成功，请求的数据：');
+          this.$bus.$emit('getUpdateUsers', { isLoading: false, errorMsg: '', users: response.data.items });
+        },
+        (error) => {
+          console.log('请求失败，错误信息：' + error.message);
+          this.$bus.$emit('getUpdateUsers', { isLoading: false, errorMsg: error.message, users: [] });
+        }
+      );
+    },
+  },
+};
+</script>
