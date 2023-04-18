@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h1>当前和的值：{{ sum }}</h1>
-    <h1>当前和放大10倍的值：{{ bigSum }}</h1>
+    <h1>当前x的值：{{ sum }}</h1>
+    <h1>当前x放大10倍的值：{{ bigSum }}</h1>
     <h1>我在 {{ school }}，地址是{{ address }}</h1>
-    <h1 style="color: red">person组件的记录长度为:{{ personList.length }}</h1>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -47,7 +46,7 @@ export default {
   },
   computed: {
     // ...mapState({sum:'sum',school:'school',address:'address'})
-    ...mapState(['sum', 'school', 'address', 'personList']),
+    ...mapState(['sum', 'school', 'address']),
     ...mapGetters(['bigSum']),
   },
   mounted() {
