@@ -1,18 +1,19 @@
 <template>
   <div class="container">
-    <MySearch></MySearch>
-    <MyList></MyList>
+    <Count></Count>
   </div>
 </template>
 
 <script>
-import MySearch from './components/MySearch';
-import MyList from './components/MyList';
+import Count from './components/Count';
 export default {
   name: 'App',
   components: {
-    MySearch,
-    MyList,
+    Count,
+  },
+  data() {
+    return {};
   },
 };
 </script>
+<style></style>
