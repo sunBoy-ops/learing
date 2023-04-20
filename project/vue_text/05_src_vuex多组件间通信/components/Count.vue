@@ -41,14 +41,16 @@ export default {
     //   this.$store.dispatch('jiaWait', this.n);
     // },
     // 借助mapActions生成对应的方法，方法中会调用dispatch去联系Actions(对象写法)
-    ...mapActions({ incrementOdd: 'jiaOdd', incrementWait: 'jiaWait' }),
+    ...mapActions('countAbout', { incrementOdd: 'jiaOdd', incrementWait: 'jiaWait' }),
     // ...mapActions(['jiaOdd', 'jiaWait']),
-    ...mapMutations({ increment: 'JIA', decrement: 'JIAN' }),
+    ...mapMutations('countAbout', { increment: 'JIA', decrement: 'JIAN' }),
   },
   computed: {
     // ...mapState({sum:'sum',school:'school',address:'address'})
-    ...mapState(['sum', 'school', 'address', 'personList']),
-    ...mapGetters(['bigSum']),
+    // ...mapState(['sum', 'school', 'address', 'personList']),
+    ...mapState('countAbout', ['sum', 'school', 'address']),
+    ...mapState('personAbout', ['personList']),
+    ...mapGetters('countAbout', ['bigSum']),
   },
   mounted() {
     console.log(this);

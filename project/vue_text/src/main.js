@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import App from './App.vue';
-
-import store from './store';
+// 引入vue-router
+import VueRouter from 'vue-router';
+// 引入路由器
+import router from './router';
 Vue.config.productionTip = false;
-
+// 引用vuerouter插件
+Vue.use(VueRouter);
 new Vue({
   render: (h) => h(App),
-  store,
-  beforeCreate() {
-    Vue.prototype.$bus = this; //安装全局事件总线
-  },
+  router: router,
 }).$mount('#app');
