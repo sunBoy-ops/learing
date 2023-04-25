@@ -21,7 +21,7 @@
 
 ## 2.搭建Vuex环境
 
-1. 下载安装 `pnpm add vuex@3`
+1. 下载安装 `npm i vuex@3`
 
 2. 创建文件：```src/store/index.js```
 
