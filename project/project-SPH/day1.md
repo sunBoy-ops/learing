@@ -137,3 +137,82 @@ $router:一般进行编程式导航进行路由跳转【push|replace】
 声明式导航router-link,可以进行路由的跳转编程式导航push|replace，可以进行路由跳转
 编程式导航:声明式导航能做的，编程式导航都能在，
 但是编程式导航除了可以进行路由跳转，还可以做一些其他的业务逻辑。
+
+
+
+## 6.Footer组件显示与隐藏
+
+显示或者隐藏组件: v-if|v-show
+Footer组件:在Home、Search显示Footer组件Footer组件:在登录、注册时候隐藏的
+
+### 6.1我们可以根据组件身上的$route获取当前路由的信息，通过路由路径判断Footer显示与隐藏。
+
+### 6.2配置的路由的时候，可以给路由添加路由元信息【meta】，路由需要配置对象，它的key不能瞎写、胡写、乱写
+
+
+
+## 8.路由传参
+
+### 8.1:路由跳转有几种方式?
+
+比如:A->B
+
+声明式导航: router-link（务必要有to属性)，可以实现路由的跳转
+
+编程式导航:利用的是组件实例的$router.push|replace方法，可以实现路由的跳转。(可以书写一些自己业务)
+
+### 8.2:路由传参，参数有几种写法?
+
+params参数:属于路径当中的一部分，需要注意，在配置路由的时候，需要占位
+
+query参数:不属于路径当中的一部分，类似于ajax中的queryString/home?k=v&kv=,不需要占位
+
+
+
+## 9.路由传参相关面试题
+
+第一种:字符串形式
+
+this.$router.push( " /search/" + this.keyword+"?k="+this.keyword.toupperCase());
+
+第二种:模板字符串
+this.$router.push( /search/${this.keyword} ?k=$(this.keyword.toupperCase()})
+
+第三种:对象
+ this. $router.push({name : " search" ,params: {keyword:this.keyword} , query :{k:this.keyword.touppercase()} )
+
+### 1:路由传递参数（对象写法）path是否可以结合params参数一起使用?
+
+//答:路由跳转传参的时候，对象的写法可以是name、path形式，但是需要注意的是，path这种写法不能与params参数一起使用
+
+this. $router.push({path: ' /seanch ' ,params: {keyword:this. keywond} ,query : {k:this. keyword.touppercase() }
+
+### 2:如何指定params参数可传可不传?
+
+//如果路由要求传递params参数，但是你就不传递params参数，发现一件事情，URL会有问题的
+//如何指定params参数可以传递、或者不传递，在配置路由的时候，在占位的后面加上一个问号【params可以传递或者'search/:keyword?'】
+
+ this.$router.push({name : ' search ' ,query :{k:this.keyword.toUppercase()});
+
+### 3 : params参数可以传递也可以不传递，但是如果传递是空串，如何解决?
+
+使用undefined解决: params参数可以传递、不传递（空的字符串)
+
+// this.$router.push({name: ' seanch ' , params : {keyword: ""||undefined} ,query: {k:this.keyword.toUppercase()} )
+
+### 4:路由组件能不能传递props数据?
+
+可以的:**三种写法**
+
+#### 布尔值写法: params 
+
+props:true,
+
+#### 对象写法:额外的给路由组件传递一些props
+
+props:{a:1,b: 2},
+
+#### 函数写法:可以params参数、query参数，通过props传递给路由组件
+
+props : ($route)=>({keyword:$route.params. keyword, k:$route.query.k})
+
