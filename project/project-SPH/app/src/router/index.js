@@ -6,6 +6,42 @@ import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 Vue.use(VueRouter);
 
+let originPush = VueRouter.prototype.push;
+let originReplace = VueRouter.prototype.replace;
+
+VueRouter.prototype.push = function (location, resolve, reject) {
+  if (resolve && reject) {
+    // 不使用 call 调用 则是window调用的push方法会报错 必须使用call，指向VueRouter实例对象
+    originPush.call(this, location, resolve, reject);
+  } else {
+    console.log(originPush);
+    originPush.call(
+      this,
+      location,
+      () => {},
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+};
+
+VueRouter.prototype.replace = function (location, resolve, reject) {
+  if (resolve && reject) {
+    // 不使用 call 调用 则是window调用的push方法会报错 必须使用call，指向VueRouter实例对象
+    originReplace.call(this, location, resolve, reject);
+  } else {
+    originReplace.call(
+      this,
+      location,
+      () => {},
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+};
+
 export default new VueRouter({
   mode: 'history',
   routes: [
