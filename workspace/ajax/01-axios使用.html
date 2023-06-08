@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-axios使用</title>
+    <script src="./axios.js"></script>
+  </head>
+  <body>
+    <!--
+      本阶段所有的接口都在这个网站:https://apifox.com/apidoc/project-1937884/api-49760223
+      省份数据地址:http://hmajax.itheima.net/api/province
+      目标:使用axios库，获取省份列表数据，展示到页面上
+    -->
+    <ul class="my-ul"></ul>
+    <script>
+      /*
+      1.axios 使用
+      本阶段所有的接口都在这个网站:https://apifox.com/apidoc/project-1937884/api-49760223
+      省份数据地址:http://hmajax.itheima.net/api/province
+      目标:使用axios库，获取省份列表数据，展示到页面上
+      */
+      axios({
+        url: 'http://hmajax.itheima.net/api/province',
+      }).then((res) => {
+        console.log(res);
+      });
+
+      /*
+      2.url认识
+      URL:全球统一资源定位符
+      新闻数据地址: http://hmajax.itheima.net/api/news
+      协议://域名/路径
+      */
+      axios({
+        url: 'http://hmajax.itheima.net/api/news',
+      }).then((res) => {
+        console.log(res);
+        console.log(res.data.data);
+      });
+
+      /*
+      3.接口文档
+      接口文档: 相当于是ajax使用说明书，在公司中一般由后台人员提供
+      合格的接口文档至少需要有以下三个组成部分
+        1.请求路径(ur1):找到网络上的资源
+        2．请求方法(method):资源的操作
+        3.请求参数:浏览器发送的额外的信息,用于操作对应的资源
+
+      图书列表接口文档:
+        路径: http://ajax-api.itheima.net/api/books
+        方法: get
+        参数:无
+      */
+      axios({
+        url: 'http://ajax-api.itheima.net/api/books',
+        method: 'get',
+        creator: '老李',
+      }).then((res) => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>

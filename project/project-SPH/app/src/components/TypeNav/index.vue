@@ -3,7 +3,49 @@
   <div class="type-nav">
     <!-- <h1>{{categoryList}}</h1> -->
     <div class="container">
-      <h2 class="all">全部商品分类</h2>
+      <div @mouseleave="leaveIndex">
+        <h2 class="all">全部商品分类</h2>
+        <div class="sort">
+          <div class="all-sort-list2">
+            <div
+              class="item"
+              v-for="(c1,index) in categoryList"
+              :key="c1.categoryId"
+            >
+              <h3
+                @mouseenter="enterIndex(index)"
+                :class="{'h3-hover':index==currentIndex}"
+              >
+                <a href="">{{c1.categoryName}}</a>
+              </h3>
+              <div
+                class="item-list clearfix"
+                :style="{'display':currentIndex==index?'block':'none'}"
+              >
+                <div
+                  class="subitem"
+                  v-for="c2 in c1.categoryChild"
+                  :key="c2.categoryId"
+                >
+                  <dl class="fore">
+                    <dt>
+                      <a href="">{{c2.categoryName}}</a>
+                    </dt>
+                    <dd>
+                      <em
+                        v-for="c3 in c2.categoryChild"
+                        :key="c3.categoryId"
+                      >
+                        <a href="">{{c3.categoryName}}</a>
+                      </em>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <nav class="nav">
         <a href="###">服装城</a>
         <a href="###">美妆馆</a>
@@ -14,40 +56,7 @@
         <a href="###">有趣</a>
         <a href="###">秒杀</a>
       </nav>
-      <div class="sort">
-        <div class="all-sort-list2">
-          <div
-            class="item"
-            v-for="c1 in categoryList"
-            :key="c1.categoryId"
-          >
-            <h3>
-              <a href="">{{c1.categoryName}}</a>
-            </h3>
-            <div class="item-list clearfix">
-              <div
-                class="subitem"
-                v-for="c2 in c1.categoryChild"
-                :key="c2.categoryId"
-              >
-                <dl class="fore">
-                  <dt>
-                    <a href="">{{c2.categoryName}}</a>
-                  </dt>
-                  <dd>
-                    <em
-                      v-for="c3 in c2.categoryChild"
-                      :key="c3.categoryId"
-                    >
-                      <a href="">{{c3.categoryName}}</a>
-                    </em>
-                  </dd>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </template>
@@ -61,7 +70,9 @@ export default {
   components: {},
   data() {
     // 这里存放数据
-    return {};
+    return {
+      currentIndex: undefined,
+    };
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -70,7 +81,14 @@ export default {
     // 向vuex发送信号
     this.$store.dispatch("categoryList");
   },
-  methods: {},
+  methods: {
+    enterIndex(index) {
+      this.currentIndex = index;
+    },
+    leaveIndex() {
+      this.currentIndex = undefined;
+    },
+  },
   computed: {
     ...mapState({
       // mapState 对象写法 右侧需要的是一个函数，当使用这个计算属性的时候，右侧函数会立即执行一次
@@ -139,7 +157,9 @@ export default {
               color: #333;
             }
           }
-
+          .h3-hover {
+            background-color: skyblue;
+          }
           .item-list {
             display: none;
             position: absolute;
@@ -194,11 +214,11 @@ export default {
             }
           }
 
-          &:hover {
-            .item-list {
-              display: block;
-            }
-          }
+          // &:hover {
+          //   .item-list {
+          //     display: block;
+          //   }
+          // }
         }
       }
     }
