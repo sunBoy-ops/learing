@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-案例：新闻列表</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .news-list .news-item {
+        display: flex;
+        width: 80vw;
+        padding: 4px;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        box-sizing: border-box;
+      }
+      .news-list .news-item .thumb {
+        width: 25vw;
+        height: 140px;
+        margin-right: 10px;
+        background-color: #000;
+      }
+      .news-list .news-item .right-box {
+        position: relative;
+        width: 55vw;
+      }
+      .news-list .news-item .right-box h1 {
+        font-size: 20px;
+      }
+      .news-list .news-item .right-box .footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .news-list .news-item .right-box .footer div {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 新闻列表 -->
+    <div class="news-list">
+      <!-- 新闻item项 -->
+      <div class="news-item">
+        <img class="thumb" src="" alt="" />
+        <div class="right-box">
+          <!-- 新闻标题 -->
+          <h1>1111111</h1>
+          <div class="footer">
+            <div>
+              <!-- 新闻来源 -->
+              <span>222</span>
+              <!-- 新闻时间 -->
+              <span>333</span>
+            </div>
+            <!-- 新闻评论数 -->
+            <span>444</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../axios.js"></script>
+    <script>
+      //1.封装渲染函数
+      const renderData = (arr) => {
+        console.log(arr);
+        document.querySelector('.news-list').innerHTML = arr
+          .map(
+            (item) =>
+              `<div class="news-item">
+        <img class="thumb" src="${item.img}" alt="" />
+        <div class="right-box">
+          <!-- 新闻标题 -->
+          <h1>${item.title}</h1>
+          <div class="footer">
+            <div>
+              <!-- 新闻来源 -->
+              <span>${item.source}</span>
+              <!-- 新闻时间 -->
+              <span>${item.time}</span>
+            </div>
+            <!-- 新闻评论数 -->
+            <span>${item.cmtcount}</span>
+          </div>
+        </div>
+      </div>`
+          )
+          .join('');
+      };
+      // 2.页面一加载，使用axios请求数据并渲染
+      axios
+        .get('http://hmajax.itheima.net/api/news')
+        .then((res) => {
+          console.log(res.data.data);
+          renderData(res.data.data);
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+        });
+    </script>
+  </body>
+</html>

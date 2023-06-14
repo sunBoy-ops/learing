@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>post增加</title>
+  </head>
+  <body>
+    <button>注册</button>
+    <script src="./axios.js"></script>
+    <script>
+      document.querySelector('button').addEventListener('click', () => {
+        axios({
+          url: 'http://hmajax.itheima.net/api/books',
+          method: 'post',
+          data: { bookname: '《黑马程序员》', author: '小马', publisher: '北京出版社', creator: '老李' },
+        }).then((res) => {
+          console.log(res);
+        });
+      });
+    </script>
+  </body>
+</html>

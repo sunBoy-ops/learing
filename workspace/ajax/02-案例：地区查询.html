@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>地区查询</title>
+    <link rel="stylesheet" href="./css/cdn.bootcdn.net_ajax_libs_twitter-bootstrap_5.1.0_css_bootstrap.css" />
+  </head>
+  <body>
+    <div class="container text-center">
+      <form action="">
+        <div class="mb-3 col">
+          <label for="" class="form-label">省份名称</label>
+          <!-- province city -->
+          <input type="text" value="北京" name="province" class="form-control province" />
+        </div>
+        <div class="mb-3 col">
+          <label for="" class="form-label">城市名称</label>
+          <!-- province city -->
+          <input type="text" value="北京市" name="city" class="form-control city" />
+        </div>
+      </form>
+      <button type="button" class="btn btn-primary sel-btn">查询</button>
+      <br /><br />
+      <p>地区列表：</p>
+      <ul class="list-group">
+        <!-- 示例地区 -->
+        <li class="list-group-item">东城区</li>
+      </ul>
+    </div>
+    <script src="./axios.js"></script>
+    <script>
+      document.querySelector('.sel-btn').addEventListener('click', () => {
+        const pname = document.querySelector('.province').value;
+        const cname = document.querySelector('.city').value;
+        axios({
+          url: 'http://hmajax.itheima.net/api/area',
+          method: 'get',
+          params: { pname, cname },
+        }).then((res) => {
+          console.log(res);
+          document.querySelector('.list-group').innerHTML = res.data.list.map((item) => `<li class="list-group-item">${item}</li>`).join('');
+        });
+      });
+    </script>
+  </body>
+</html>

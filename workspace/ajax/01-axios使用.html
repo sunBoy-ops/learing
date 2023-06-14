@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01-axios使用</title>
-    <script src="./axios.js"></script>
   </head>
   <body>
     <!--
@@ -14,52 +13,177 @@
       目标:使用axios库，获取省份列表数据，展示到页面上
     -->
     <ul class="my-ul"></ul>
+    <script src="./axios.js"></script>
     <script>
       /*
-      1.axios 使用
-      本阶段所有的接口都在这个网站:https://apifox.com/apidoc/project-1937884/api-49760223
-      省份数据地址:http://hmajax.itheima.net/api/province
-      目标:使用axios库，获取省份列表数据，展示到页面上
-      */
-      axios({
-        url: 'http://hmajax.itheima.net/api/province',
-      }).then((res) => {
-        console.log(res);
-      });
+            1.axios 使用
+            本阶段所有的接口都在这个网站:https://apifox.com/apidoc/project-1937884/api-49760223
+            省份数据地址:http://hmajax.itheima.net/api/province
+            目标:使用axios库，获取省份列表数据，展示到页面上
+            */
 
       /*
-      2.url认识
-      URL:全球统一资源定位符
-      新闻数据地址: http://hmajax.itheima.net/api/news
-      协议://域名/路径
-      */
-      axios({
-        url: 'http://hmajax.itheima.net/api/news',
-      }).then((res) => {
-        console.log(res);
-        console.log(res.data.data);
-      });
+            axios({
+              url: 'http://hmajax.itheima.net/api/province',
+            }).then((res) => {
+              console.log(res);
+            });
+            */
 
       /*
-      3.接口文档
-      接口文档: 相当于是ajax使用说明书，在公司中一般由后台人员提供
-      合格的接口文档至少需要有以下三个组成部分
-        1.请求路径(ur1):找到网络上的资源
-        2．请求方法(method):资源的操作
-        3.请求参数:浏览器发送的额外的信息,用于操作对应的资源
+            2.url认识
+            URL:全球统一资源定位符
+            新闻数据地址: http://hmajax.itheima.net/api/news
+            协议://域名/路径
+            */
+      /*
+            axios({
+              url: 'http://hmajax.itheima.net/api/news',
+            }).then((res) => {
+              console.log(res);
+              console.log(res.data.data);
+            });
+            */
 
-      图书列表接口文档:
-        路径: http://ajax-api.itheima.net/api/books
-        方法: get
-        参数:无
-      */
-      axios({
-        url: 'http://ajax-api.itheima.net/api/books',
-        method: 'get',
-        creator: '老李',
-      }).then((res) => {
-        console.log(res);
-      });
+      /*
+            3.接口文档
+            接口文档: 相当于是ajax使用说明书，在公司中一般由后台人员提供
+            合格的接口文档至少需要有以下三个组成部分
+              1.请求路径(ur1):找到网络上的资源
+              2．请求方法(method):资源的操作
+              3.请求参数:浏览器发送的额外的信息,用于操作对应的资源
+
+            图书列表接口文档:
+              路径: http://ajax-api.itheima.net/api/books
+              方法: get
+              参数:无
+            */
+      /*
+            axios({
+              url: 'http://ajax-api.itheima.net/api/books',
+              method: 'get',
+              creator: '老李',
+            }).then((res) => {
+              console.log(res);
+            });
+            */
+
+      /*
+            4.查询参数:url?参数名1=参数值1&参数名2=参数值2
+            axios语法:
+              axios({
+              url :"请求地址",
+              method : "get",
+              params: {参数名:参数值}
+            }).then(res=>{
+              res就是服务器返回的数据
+            })
+              */
+      /*
+            axios({
+              // 通用写法
+              // url: 'http://hmajax.itheima.net/api/city?pname=辽宁省',
+              url: 'http://hmajax.itheima.net/api/city',
+              method: 'get',
+              params: { pname: '辽宁省' },
+            }).then((res) => {
+              console.log(res);
+            });
+            */
+
+      /*
+            5.注册用户:http:/ /hmajax.itheima.net/api/register
+            请求方法:POST
+            参数名:
+              username:用户名(中英文和数字组成,最少8位)
+              password:密码(最少6位)
+            目标:点击按钮，通过axios提交用户和密码。完成注册
+            */
+      /*
+          axios发送post参数
+          axios({
+            url :"请求地址",
+            method : "post",
+            params : { get参数},
+            data : { post参数}
+          }).then(res=>{
+            res就是服务器返回的数据
+          )}
+            */
+
+      /*
+            6.catch错误处理
+            axios({
+              url :"请求地址",method :"请求方法",
+              params: {参数名:参数值}
+            }).then(res=>{
+              res就是服务器返回的数据
+            }).catch( error=>{
+              error就是ajax错误信息
+            })
+            */
+      /*
+            axios({
+              url: 'http://hmajax.itheima.net/api/register',
+              method: 'post',
+              data: { username: 'admin123', password: '123456' },
+            })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.log(error.response.data);
+                alert(error.response.data.message);
+              });
+              */
+
+      /*
+            7.axios第二种请求写法
+              方式二:请求别名
+                axios.get("请求路径", { params:{参数名:参数值}})
+                axios.post("请求路径",{参数名:参数值})
+            */
+
+      /*
+            axios
+              .post('http://hmajax.itheima.net/api/register', { username: 'admin123', password: '123456' })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.log(error.response.data);
+                alert(error.response.data.message);
+              });
+            axios.get('http://hmajax.itheima.net/api/city', { params: { pname: '辽宁省' } }).then((res) => {
+              console.log(res);
+            });
+            */
+
+      /*
+            8.get与post区别
+            get与post区别
+            1.传参方式不同:get请求行传参,post请求体传参
+            2.速度不同: getlpost快
+            3.大小不同: get有大小限制(2-4kb),post没有限制
+            4.安全性不同: postl比get安全性高|
+            */
+
+      /*
+            9.渲染业务
+            1.封装渲染函数
+            2.页面一加载，使用axios请求数据并渲染
+
+            1.封装渲染函数
+            const renderData = arr=>{
+              document.querySelector ("#news-list").innerHTML= 数组.map().join()}
+            2.页面一加载,使用axios请求数据并渲染
+            axios.get("http://hmajax.itheima.net/api/news").then( res=>{
+              console.log( res )
+           //调用函数
+            renderData(res.data.data)
+          })
+
+            */
     </script>
   </body>
 </html>
