@@ -12,12 +12,16 @@
     <script>
       document.querySelector('button').addEventListener('click', () => {
         axios({
-          url: 'http://hmajax.itheima.net/api/books',
+          url: 'http://hmajax.itheima.net/api/register',
           method: 'post',
-          data: { bookname: '《黑马程序员》', author: '小马', publisher: '北京出版社', creator: '老李' },
-        }).then((res) => {
-          console.log(res);
-        });
+          data: { username: 'admin2001', password: '123456' },
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
     </script>
   </body>
