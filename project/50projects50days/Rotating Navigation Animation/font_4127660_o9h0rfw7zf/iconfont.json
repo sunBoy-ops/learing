@@ -1,0 +1,23 @@
+{
+  "id": "4127660",
+  "name": "03project",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "36026454",
+      "name": "os-icon-3line",
+      "font_class": "os-icon-3line",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "36026490",
+      "name": "os-icon-close",
+      "font_class": "os-icon-close",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    }
+  ]
+}

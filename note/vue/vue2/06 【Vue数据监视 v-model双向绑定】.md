@@ -459,3 +459,37 @@ Vue监视数据的原理：
 
 
 
+### 2.3组件使用v-model(语法糖)
+
+```vue
+//父组件 App.vue
+<template>
+	<MyGoods :value="price" @input="price=$event"></MyGoods>
+</template>
+<script>
+	import MyGoods from './components/MyGoods.vue'
+    export default{
+        name:'App',
+        components:{
+            MyGoods,
+        },
+        data(){
+            return{
+                price:100
+            }
+        }
+    }
+</script>
+//子组件
+<template>
+	<div>
+        <h4>
+            商品价格：{{value}}
+    	</h4>
+        <button @click=$emit('input',value-1)>
+            砍一刀
+    </button>
+    </div>
+</template>
+```
+
