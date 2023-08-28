@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-文件上传</title>
+</head>
+<body>
+<input type="file" name="" id=""><br>
+<img src="" alt="">
+<script>
+/*
+ * 目标:图片上传,显示到网页上
+  * 1.获取图片文件
+  * 2．使用 FormData携带图片文件
+  * 3，提交到服务器，获取图片url网址使用
+ */
+//   文件选择元素->change改变事件
+
+// 1.给file表单注册change事件
+const input = document.querySelector('input')
+input.addEventListener('change',function(){
+  console.log(this.files);
+  const  file = this.files[0]
+
+})
+</script>
+</body>
+</html>
