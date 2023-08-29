@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>变量提升与函数提升</title>
+  </head>
+  <body>
+    <!--
+      1.变量声明提升
+        *使用var定义(声明)变量,在定义语句之前就能访问
+        *值：undefined
+      2.函数声明提升
+        *使用function声明函数，在声明语句之前就能调用
+        * 值：函数定义(对象)
+      3.问题：变量提升和函数提升是怎么产生的？
+ -->
+    <script>
+      /*
+    面试题：输出undefined
+  */
+      var a = 3;
+      function fn() {
+        console.log('====================================');
+        console.log(a);
+        console.log('====================================');
+        var a = 4;
+      }
+      fn();
+      console.log('====================================');
+      // 变量提升 undefined
+      console.log(b);
+      console.log('====================================');
+      // 可调用 函数提升
+      fn2();
+      // 用var声明的函数 不能提前调用 会报错 因为变量不能执行
+      fn3();
+      function fn2() {
+        console.log('====================================');
+        console.log('fn2');
+        console.log('====================================');
+      }
+      var b = 4;
+      var fn3 = function () {};
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>面试题</title>
+  </head>
+  <body>
+    <script>
+      // 测试题1
+      function A() {}
+      A.prototype.n = 1;
+
+      var b = new A();
+      A.prototype = { m: 2, n: 3 };
+      var c = new A();
+      console.log('====================================');
+      console.log(b.m, b.n, c.m, c.n);
+      console.log('====================================');
+
+      // 测试题2
+      function F() {}
+      Object.prototype.a = function () {
+        console.log('====================================');
+        console.log('a');
+        console.log('====================================');
+      };
+      Function.prototype.b = function () {
+        console.log('====================================');
+        console.log('b');
+        console.log('====================================');
+      };
+      var f = new F();
+      f.a();
+      // f.b();
+      F.a();
+      F.b();
+    </script>
+  </body>
+</html>

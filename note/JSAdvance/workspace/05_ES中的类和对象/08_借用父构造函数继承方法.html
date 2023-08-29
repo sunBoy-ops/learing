@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>借用父构造函数继承方法</title>
+  </head>
+  <body>
+    <script>
+      function Father(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      Father.prototype.money = function () {
+        console.log('父亲会挣钱');
+      };
+      function Son(uname, age) {
+        // 通过call 将父构造函数中的this 指向子构造函数
+        Father.call(Son, uname, age);
+      }
+      // 将子构造函数 指向父构造函数的实例对象
+      Son.prototype = new Father();
+      // 改变构造函数原型指向改变了，还要修改constructor指向
+      Son.prototype.constructor = Son;
+      Son.prototype.exam = function () {
+        console.log('孩子要考试');
+      };
+      var son = new Son('htt', 3);
+      console.log(son);
+      console.log(Son.prototype.constructor);
+      son.exam();
+      son.money();
+    </script>
+  </body>
+</html>

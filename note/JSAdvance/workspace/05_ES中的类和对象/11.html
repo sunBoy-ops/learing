@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+    <style>
+      body {
+        background-color: #ccc;
+      }
+      input {
+        outline: none;
+      }
+      section {
+        width: 400px;
+        height: 400px;
+        margin: 50px auto;
+        padding: 30px 0;
+        background-color: #fff;
+        text-align: center;
+      }
+      section h3 {
+        margin: 0 220px 10px 0;
+      }
+      section form .inp1 {
+        margin-top: 20px;
+        padding: 4px;
+        width: 200px;
+        border: 1px solid #ccc;
+        color: #ccc;
+      }
+      section form label span {
+        display: inline-block;
+        width: 68px;
+        height: 40px;
+        text-align: center;
+      }
+      section form .inp2 {
+        width: 50px;
+        padding: 4px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h3>新用户注册</h3>
+      <form action="">
+        <label>用户名：<input class="inp1" type="text" name="user" id="user" placeholder="请输入用户名" /></label>
+        <br />
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;密码：<input class="inp1" type="password" name="psd" id="psd" placeholder="请输入6个以上数字密码" /></label>
+        <br />
+        <label>MEAIL &nbsp;&nbsp;<input class="inp1" type="email" name="email" id="email" placeholder="可用于登录和找回密码" /></label>
+        <br />
+        <label><span>手机验证码：</span><input class="inp2" type="text" name="yzm" id="yzm" /></label><button>获取手机验证码</button> <br /><input type="radio" name="dx" id="dx" /> 请阅读
+        <a href="javascript:;">服务条款</a> <br /><button type="submit">注册</button>
+      </form>
+    </section>
+  </body>
+</html>

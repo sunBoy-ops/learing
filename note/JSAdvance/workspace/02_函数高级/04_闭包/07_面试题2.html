@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07_面试题2</title>
+  </head>
+  <body>
+    <script>
+      function fun(n, o) {
+        console.log('====================================');
+        console.log(n, o);
+        console.log('====================================');
+        return {
+          fun: function (m) {
+            return fun(m, n);
+          },
+        };
+      }
+
+      // 重点：闭包是否产生 取决于a保存的值 a 保存 o undefined
+      var a = fun(0);
+      //  闭包没有产生 用a保存的n是不会变的 m一直在变化
+      a.fun(1);
+      a.fun(2);
+      a.fun(3); //0,undefined 1,0 2,0 3,0
+      // 闭包产生了 b的m n连续的调用 一直在变
+      var b = fun(0).fun(1).fun(2).fun(3); //0,undefined  1,0 2,1 3,2
+      // 闭包产生了 c保存 1 0
+      var c = fun(0).fun(1); //0,undefined 1,0
+      // 闭包没有产生 n的值是不变的
+      c.fun(2); //2,1
+      c.fun(3); //3,1
+    </script>
+  </body>
+</html>

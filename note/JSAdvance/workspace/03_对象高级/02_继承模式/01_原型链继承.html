@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_原型链继承</title>
+  </head>
+  <body>
+    <!--
+  方式1：原型链继承
+    1.套路
+      1.定义父类型的构造函数
+      2.给父类型的原型添加方法
+      3.定义子类型的构造函数
+      4.创建父类型的实例对象赋值给子类型的原型对象
+      5.将子类型的原型构造函数设置为子类型
+      6.给子类型添加方法
+      7.创建子类型的对象：可以调用父类型的方法
+    2.关键：
+      1.子类型的原例为父类型的一个实例对象
+   -->
+    <script>
+      // 父类型
+      function Supper() {
+        this.supProp = ' sup property';
+      }
+      Supper.prototype.showSupperProp = function () {
+        console.log('====================================');
+        console.log(this.supProp);
+        console.log('====================================');
+      };
+      // 子类型
+      function Sub() {
+        this.subProp = 'sub property';
+      }
+      // 让子类型的原型为父类型的实例
+      Sub.prototype = new Supper();
+      // 子类型的原型对象上的constructor指向子类型
+      Sub.prototype.constructor = Sub;
+
+      Sub.prototype.showSubProp = function () {
+        console.log('====================================');
+        console.log(this.subProp);
+        console.log('====================================');
+      };
+      var sub = new Sub();
+      sub.showSubProp();
+      sub.showSupperProp();
+
+      console.log('====================================');
+      console.log(sub.constructor);
+      console.log('====================================');
+    </script>
+  </body>
+</html>

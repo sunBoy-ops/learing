@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06_使用类注意事项</title>
+  </head>
+  <body>
+    <button>点击</button>
+    <script>
+      var that;
+      var _that;
+      class Father {
+        constructor(x, y) {
+          // 用重组变量接收this赋值给that
+          that = this;
+          console.log('====================================');
+          console.log(this);
+          console.log('====================================');
+          this.x = x;
+          this.y = y;
+          // this.sing();
+          this.btn = document.querySelector('button');
+          this.btn.onclick = this.sing;
+        }
+        sing() {
+          console.log('====================================');
+          // that 指向是实例对象 就能访问实例对象中的属性
+          console.log(that.x);
+          console.log('====================================');
+          console.log('====================================');
+          // 这里的this是 btn元素对象 谁调用的指向谁
+          console.log(this.x);
+          console.log('====================================');
+        }
+        dance() {
+          console.log('====================================');
+          // 函数中的this 指向是实例对象
+          console.log(this);
+          console.log('====================================');
+        }
+      }
+      var father = new Father(1, 2);
+      father.dance();
+    </script>
+  </body>
+</html>

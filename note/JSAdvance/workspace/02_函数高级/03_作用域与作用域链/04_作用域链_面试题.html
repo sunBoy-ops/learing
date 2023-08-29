@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_作用域链_面试题</title>
+  </head>
+  <body>
+    <script>
+      // 面试题1 作用域是函数定义是创建的
+      var a = 200;
+      function fn1() {
+        console.log('====================================');
+        console.log(a);
+        console.log('====================================');
+      }
+      function fn2() {
+        var a = 300;
+        fn1();
+      }
+      fn2(); //200
+
+      // 面试题2 fn3先查找自己的函数作用域 再查找全局作用域
+      // fn4 fn3先查找自己的函数作用域 再查找全局作用域 最后没有找到
+      var fn3 = function () {
+        console.log('====================================');
+        console.log(fn3);
+        console.log('====================================');
+      };
+      fn3(); //打印函数fn3
+
+      var obj = {
+        fn4: function () {
+          console.log('====================================');
+          console.log(this.fn4); //打印函数fn4
+          console.log(fn4); // 报错
+          console.log('====================================');
+        },
+      };
+      obj.fn4();
+    </script>
+  </body>
+</html>

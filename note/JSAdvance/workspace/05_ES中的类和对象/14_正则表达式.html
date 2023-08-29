@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>正则表达式</title>
+  </head>
+  <body>
+    <script>
+      // 以什么开头^ 以什么结尾$ ^$全文匹配
+      var reg = /^abc$/;
+      console.log('====================================');
+      console.log(reg.test('abc')); 
+      console.log(reg.test('abcd')); //false
+      console.log(reg.test('abcabc')); //false
+      console.log('====================================');
+
+      // 只要有其中一个就符合条件
+      var reg1 = /[abc]/;
+      console.log('====================================');
+      console.log(reg1.test('abc'));
+      console.log(reg1.test('a'));
+      console.log(reg1.test('abcd'));
+      console.log('====================================');
+
+      //
+      var reg2 = /^[A-z0-9_-]$/;
+      console.log('====================================');
+      console.log(reg2.test('a'));
+      console.log(reg2.test('A'));
+      console.log(reg2.test(0));
+      console.log(reg2.test('_'));
+      console.log('====================================');
+    </script>
+  </body>
+</html>

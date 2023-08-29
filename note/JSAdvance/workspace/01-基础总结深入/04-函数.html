@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_函数</title>
+  </head>
+  <body>
+    <!--
+  1.什么是函数？
+      *实现特定功能的n跳语句的封装体
+      *只有函数是可以执行的，其他类型的数据不能执行
+    2.为什么要用函数？
+      *提高代码复用
+      *便于阅读交流
+    3.如何定义函数？
+      *函数声明
+      *表达式
+    4.如何调用函数？
+      *test() : 直接调用
+      * obj.test(): 通过对象调用
+      * new test():new 调用
+      *test.call/apply(obj):临时让test成为obj的方法进行调用
+ -->
+  </body>
+  <script>
+    /*
+  编写程序实现以下功能需求：
+    1.根据年龄输出对应的信息
+    2.如果小于18，输出：未成年，再等等！
+    3.如果大于60，输出:算了吧！
+    4.其他，输出：刚好！
+  */
+    function shwoInfo(age) {
+      if (age < 18) {
+        console.log('====================================');
+        console.log('未成年，再等等！');
+        console.log('====================================');
+      } else if (age > 60) {
+        console.log('====================================');
+        console.log('算了吧！');
+        console.log('====================================');
+      } else {
+        console.log('====================================');
+        console.log('刚好！');
+        console.log('====================================');
+      }
+    }
+    shwoInfo(17);
+    shwoInfo(20);
+    shwoInfo(65);
+
+    function fn1() {
+      //函数声明
+      console.log('====================================');
+      console.log('fn1');
+      console.log('====================================');
+    }
+    var fn2 = function () {
+      //表达式
+      console.log('====================================');
+      console.log('fn2');
+      console.log('====================================');
+    };
+
+    var obj = {};
+    function test2() {
+      this.xxx = 'hututu';
+    }
+    test2.call(obj); //obj.test2()  可以让一个函数成为指定任意对象的方法进行调用
+    console.log('====================================');
+    console.log(obj.xxx);
+    console.log('====================================');
+
+    // 形参的传递
+    let obj2 = {};
+    let num = 0;
+    function test3(o) {
+      o.xxx = 'hututu';
+    }
+    function test4(n) {
+      n += 1;
+    }
+    test3(obj2);
+    test4(num);
+    console.log('====================================');
+    console.log(obj2);
+    console.log(num);
+    console.log('====================================');
+  </script>
+</html>

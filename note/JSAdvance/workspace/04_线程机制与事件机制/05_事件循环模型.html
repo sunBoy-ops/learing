@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05_事件循环模型</title>
+  </head>
+  <body>
+    <!--
+      1.所有代码分类
+        * 初始化执行代码(同步代码)：包括绑定dom事件监听，发送ajax请求的代码，设置定时器
+        * 回调执行函数(异步代码):处理回调函数
+      2.js引擎执行代码的基本流程：
+        * 初始化代码==>回调代码
+      3.模型的2个重要组成部分
+        * 事件管理模块
+        * 回调队列
+      4.模型的运转流程
+        * 执行初始化代码，将回调函数交给对应模块管理
+        * 当事件发送时，管理模块会将回调函数及其数据添加到回调队列中
+        * 只有初始化代码执行完后(有一定时间)，才会遍历读取回调队列中的回调函数执行
+     -->
+    <button>点击执行</button>
+    <script>
+      function fn1() {
+        console.log('====================================');
+        console.log('fn1()');
+        console.log('====================================');
+      }
+      fn1();
+      setTimeout(() => {
+        console.log('====================================');
+        console.log('计时器执行');
+        console.log('====================================');
+      }, 2000);
+      document.querySelector('button').onclick = function () {
+        console.log('====================================');
+        console.log('点击事件触发');
+        console.log('====================================');
+      };
+      function fn2() {
+        console.log('====================================');
+        console.log('fn2()');
+        console.log('====================================');
+      }
+      fn2();
+    </script>
+  </body>
+</html>

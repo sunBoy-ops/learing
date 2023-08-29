@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_在类中添加方法</title>
+  </head>
+  <body>
+    <script>
+      // 1. 创建一个类class 创建一个 明星类
+      class Star {
+        // 类的共有属性放到 constructor 里面
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        string(song) {
+          console.log(this.name + song);
+        }
+      }
+
+      // 2.利用类 创建对象 new
+      var htt = new Star('胡图图', 5);
+      //1.在类中添加方法不用添加function
+      // 2.类中函数之间不用添加逗号隔开方法
+      ldf.string('年少有为');
+    </script>
+  </body>
+</html>

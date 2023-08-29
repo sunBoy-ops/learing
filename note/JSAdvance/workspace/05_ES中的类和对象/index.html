@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab栏切换</title>
+    <link rel="stylesheet" href="./css/iconfont.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .clearfix::after,
+      .clearfix::before {
+        content: '';
+        display: table;
+        clear: both;
+      }
+      ul {
+        list-style: none;
+      }
+      main {
+        width: 800px;
+        margin: 100px auto 0;
+        text-align: center;
+      }
+      main .tabsbox {
+        width: 100%;
+        margin-top: 40px;
+        border: 1px solid #ccc;
+      }
+      main .tabsbox .firstnav ul li {
+        position: relative;
+        float: left;
+        margin-left: -1px;
+        margin-top: -1px;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      main .tabsbox .firstnav ul li span:last-child {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 16px;
+        height: 16px;
+        padding: 0 0 0px 4px;
+        box-sizing: border-box;
+        background-color: #000;
+        color: #fff;
+        border-radius: 0 0 0 100%;
+        line-height: 20px;
+      }
+      main .tabsbox .firstnav ul li span.iconfont {
+        font-size: 2px;
+      }
+      main .tabsbox .firstnav ul li.liactive {
+        border-bottom: 0px;
+      }
+      main .tabsbox .firstnav .tabadd {
+        float: right;
+        width: 40px;
+        height: 40px;
+        margin: -1px -1px 0 0;
+        line-height: 40px;
+        border: 1px solid #ccc;
+        font-size: 20px;
+        color: #ccc;
+        cursor: pointer;
+      }
+
+      main .tabscon {
+        padding: 10px 0 0 10px;
+        box-sizing: border-box;
+        text-align: left;
+      }
+      main .tabscon section {
+        display: none;
+        height: 200px;
+      }
+      main .tabscon section.conactive {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h4>Js 面向对象 动态添加标签页</h4>
+      <div class="tabsbox">
+        <!-- tab标签 -->
+        <nav class="firstnav clearfix">
+          <ul>
+            <li class="liactive"><span>测试1</span><span class="iconfont icon-ego-close"></span></li>
+            <li><span>测试2</span><span class="iconfont icon-ego-close"></span></li>
+            <li><span>测试3</span><span class="iconfont icon-ego-close"></span></li>
+          </ul>
+          <div class="tabadd">
+            <span>+</span>
+          </div>
+        </nav>
+
+        <!-- tab内容 -->
+        <div class="tabscon">
+          <section class="conactive">测试1</section>
+          <section>测试2</section>
+          <section>测试2</section>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="./js/index.js"></script>
+</html>

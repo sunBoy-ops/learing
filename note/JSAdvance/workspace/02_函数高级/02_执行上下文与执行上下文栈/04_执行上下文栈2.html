@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>执行上下文栈2</title>
+  </head>
+  <body>
+    <!--
+  1.依次输出什么？
+  解析：先产生全局执行上下文，再进栈。又由于函数提升，函数执行上下文先产生foo(1),再foo(2),再foo(3),再foo(4)(当i=4foo不会有输出)，再出栈，先foo(3),再foo(2),再foo(1)，再全局
+  2.整个过程中产生了几个执行上下文？
+  5
+ -->
+    <script>
+      console.log('====================================');
+      console.log('gb:' + i);
+      console.log('====================================');
+      var i = 1;
+      foo(1);
+      function foo(i) {
+        if (i == 4) {
+          return;
+        }
+        console.log('====================================');
+        console.log('fb:' + i);
+        console.log('====================================');
+        foo(i + 1);
+        console.log('====================================');
+        console.log('fe:' + i);
+        console.log('====================================');
+      }
+      console.log('====================================');
+      console.log('ge:' + i);
+      console.log('====================================');
+    </script>
+  </body>
+</html>

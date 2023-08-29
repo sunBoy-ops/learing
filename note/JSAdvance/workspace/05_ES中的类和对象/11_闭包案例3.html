@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11_闭包案例3</title>
+  </head>
+  <body>
+    <script>
+      // 打车的起步价为13 (3公里内)，超过3公里按每公里5
+      // 发送拥堵多加10
+
+      var car = (function () {
+        var start = 13;
+        var total = 0;
+        return function (flag, n) {
+          if (n <= 3) {
+            total = start;
+          } else {
+            total = (n - 3) * 5 + start;
+          }
+          flag ? (total = total + 10) : total;
+          return total;
+        };
+      })();
+      console.log('====================================');
+      console.log(car(false, 1));
+      console.log(car(false, 5));
+      console.log(car(true, 5));
+      console.log('====================================');
+    </script>
+  </body>
+</html>

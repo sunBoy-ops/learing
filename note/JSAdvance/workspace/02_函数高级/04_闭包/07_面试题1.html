@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07_面试题1</title>
+  </head>
+  <body>
+    <script>
+      // 代码片段1
+      var name = 'The Window';
+      var object = {
+        name: 'My Object',
+        getNameFunc: function () {
+          return function () {
+            return this.name;
+          };
+        },
+      };
+      // object.getNameFunc() 得到是返回的函数 再执行返回的函数 这里函数是window在调用
+      alert(object.getNameFunc()()); //The Window
+
+      // 代码片段2
+      var name2 = 'The Window';
+      var object2 = {
+        name2: 'My Object',
+        getNameFunc2: function () {
+          // 闭包 先把函数的this保存
+          var that = this;
+          return function () {
+            // that 就是外部函数的this 指向object2
+            return that.name2;
+          };
+        },
+      };
+      alert(object2.getNameFunc2()()); //My object
+    </script>
+  </body>
+</html>

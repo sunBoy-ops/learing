@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>借用夫构造函数继承属性</title>
+  </head>
+  <body>
+    <script>
+      function Father(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      function Son(uname, age) {
+        // 通过call 将父构造函数中的this 指向子构造函数
+        Father.call(Son, uname, age);
+      }
+      var son = new Son('htt', 3);
+      console.log('====================================');
+      console.log(son);
+      console.log('====================================');
+    </script>
+  </body>
+</html>

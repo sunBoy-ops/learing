@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11_闭包案例2</title>
+  </head>
+  <body>
+    <ul class="bibao">
+      <li>1111</li>
+      <li>2222</li>
+      <li>3333</li>
+      <li>4444</li>
+    </ul>
+    <script>
+      var lis = document.querySelector('.bibao').querySelectorAll('li');
+      for (var i = 0; i < lis.length; i++) {
+        // 循环多少次就创建多少个立即执行函数
+        (function (i) {
+          lis[i].onclick = function () {
+            // 点击函数i 访问了立即执行函数中的变量i
+            console.log(lis[i].innerHTML);
+          };
+        })(i);
+      }
+    </script>
+  </body>
+</html>
