@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <title>简单元素</title>
+    <meta charset="UTF-8" />
+    <style lang="css">
+      .zhezhaoceng {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        opacity: 0.6;
+      }
+      .parent {
+        background-color: red;
+        border: 1px solid pink;
+      }
+      .parent > .son {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        float: left;
+      }
+      .parent::after,
+      .aprent::before {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .d1,
+      .d2,
+      .d3 {
+        width: 100px;
+        height: 100px;
+      }
+      .d1 {
+        background-color: red;
+        float: left;
+      }
+      .d2 {
+        background-color: blue;
+        float: right;
+        clear: both;
+      }
+      .d3 {
+        background-color: #000;
+        float: left;
+      }
+      .p1 {
+        background-color: skyblue;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+      }
+      .p2 {
+        width: 500px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+      .d4 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        border-top-left-radius: 50px;
+        border-bottom-right-radius: 200px;
+      }
+      span {
+        margin: 20px;
+        padding: 20px;
+        width: 80px;
+        height: 50px;
+        background-color: lightblue;
+        border: 2px solid blue;
+      }
+    </style>
+  </header>
+  <body>
+    <p>I am a paragraph and this is a <span>span</span> inside that paragraph. A span is an inline element and so does not respect width and height.</p>
+    <div class="zhezhaoceng"></div>
+    <div class="parent">
+      <div class="son"></div>
+    </div>
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="p2">
+      如果你是在课堂上进行这个测验，你可以把作品交给导师或教授去打分了。如果你是在自学，也可以在 本节测验的讨论页 或者 Mozilla 聊天室 的 #mdn 频道取得帮助。要自己先尝试，作弊是不会有收获的！
+    </div>
+    <p class="p1">p元素</p>
+    <!--步骤2  属性跳转 a的href属性-->
+    <a href="#red">跳转到红色</a>
+    <a href="#blue">跳转到蓝色</a>
+    <a href="#black">跳转到黑色</a>
+    <a href="#green">跳转到绿色</a>
+    <a href="#yellow">跳转到黄色</a>
+    <!--实现跨页面锚点跳转-->
+    <a href="02_超链接.html#img">美女</a>
+
+    <!-- 图像可以嵌套在a链接 实现 点击图片实现跳转
+     超链接也是 共享一行元素 不能实现水平居中
+     可以通过给父元素添加 align 属性
+-->
+    <div style="height: 500px; background: white" align="center">
+      <a href="http://www.baidu.com ">
+        <img src="npy.jpg" alt="" />
+      </a>
+    </div>
+
+    <!--步骤1 定义一个锚点 用于配对-->
+    <!--方式1  a的name属性-->
+    <a href="" name="red">红色</a>
+    <!--2方式   任意 标记的 id的值-->
+    <div id="blue" style="height: 500px; background: blue">蓝色</div>
+    <div id="black" style="height: 500px; background: black">黑色</div>
+    <div id="green" style="height: 500px; background: green">绿色</div>
+    <div id="yellow" style="height: 500px; background: yellow">黄色</div>
+    <div style="height: 500px; background: white"></div>
+    <a href="#">返回</a>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+    </ul>
+    <div class="d4"></div>
+  </body>
+</html>
