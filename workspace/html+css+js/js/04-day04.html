@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04</title>
+  </head>
+  <body></body>
+  <script>
+    // 1.循环
+    // 1.1 while循环
+    let num = 10;
+    // 循环的条件
+    while (num < 20) {
+      // 循环体
+      console.log('我在执行循环' + num);
+      // 修改 循环变量
+      num++;
+    }
+    // 1.2 do{}while()
+    do {
+      // 循环体
+      console.log('我在执行循环' + num);
+      // 修改 循环变量
+      num++;
+    } while (num < 30);
+    // 1.3for(初始化循环变量;判断条件是否满足;修改循环变量){}
+    for (; num < 40; num++) {
+      // 循环体
+      console.log('我在执行循环' + num);
+    }
+    // 1.4 双重循环
+    for (let i = 4; i > 0; i--) {
+      for (let j = 4; j > i; j--) {
+        document.write('&nbsp');
+      }
+      for (let j = 1; j < 2 * i; j++) {
+        document.write('*');
+      }
+      document.write('<br/>');
+    }
+  </script>
+</html>

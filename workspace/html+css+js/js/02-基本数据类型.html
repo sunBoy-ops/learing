@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-基本数据类型</title>
+  </head>
+  <body></body>
+  <script>
+    // 1.数值类型
+    let a = 10;
+    let x = 0.1,
+      y = 0.2;
+    console.log(x + y); //小数计算有误差 0.30000000000000004
+    console.log(isNaN(a)); //判断是否是数值类型 false 是数值返回false
+    console.log(isNaN(NaN)); //NaN特殊的数值类型的值(表示Not a Number不是一个数值)，一个表达式在运算过程中，js引擎在计算之前，会试图将表达式的每个分项转化为Number类型(使用Number(x))。如果转化失败，表达式将返回NaN
+    console.log(a + NaN); //数值类型与NaN计算都是NaN
+    // 2.字符串
+    // js是通过Unicode编码去存储
+    let str = '人';
+    console.log(str);
+    console.log(str.charCodeAt()); //20154 10进制编码
+    // 进行数据的转化，转为16进制
+    console.log(str.charCodeAt().toString(16)); //4eba -> "人"
+    // Unicode编码可以使用 "/u+xxx" 可以直接输出对应的文本
+    console.log('\u4eba');
+    // 3.Boolean布尔数据类型 （true/1/false/0）
+    let boolean = true;
+    //与数值类型进行运算会隐式转化为数值类型
+    console.log(boolean + 1); //2
+    // 4.undefined 未定义（声明了未赋值）
+    let unfin;
+    console.log(unfin); //undefined
+    // 5.null 没有值 运用于占位
+    // 6.类型之间的转换
+    console.log("1+'1':" + (1 + '1'), ',1 + true:' + (1 + true), ",'1' + true:" + ('1' + true), ',1+undefined:' + (1 + undefined), ',1+null:' + (1 + null)); //'11',2,'1true',NaN,1
+    // 7.typeof 用于判断基本数据类型，不能区分引用数据类型，引用数据类型都是返回object
+    console.log(typeof 1, typeof '1', typeof true, typeof undefined, typeof null); //number string boolean undefined object
+
+    // 8.强制类型转换
+    // 8.1 数值类型转换 parseInt() parseFloat() Number()
+    let str2 = '123.abc';
+    let str3 = 'abc.123';
+    let str4 = '123.456abc';
+    // 转整数
+    console.log(parseInt(str2), typeof parseInt(str2)); //123
+    console.log(parseInt(str3), typeof parseInt(str3)); //NaN 遇见转化不了的转为NaN
+    // 转浮点数
+    console.log(parseFloat(str4), typeof parseFloat(str4)); //123.456
+    // Number 比较要求苛刻 只接收纯数字的字符串
+    console.log(Number(str4), typeof Number(str4));
+    // 8.2 字符串类型的转换 xxx.toString() toString()
+    // xxx.toString() 不能转化undefined null
+    /* console.log(undefined.toString(), typeof undefined.toString()); //Uncaught TypeError: Cannot read properties of undefined (reading 'toString') */
+    console.log(true.toString(), typeof true.toString());
+    // String(xxx) 都可以转换
+    console.log(String(undefined), typeof String(undefined));
+
+    // 9.Number.toFiexd(x) 数值类型保留小数 x小数位数
+    console.log((1 / 3).toFixed(2));
+
+    // 10.模拟用户输入的方法 prompt("提示文本")
+    let promptStr1 = prompt('请输入一个数值');
+    let promptStr2 = prompt('请再输入一个数值');
+    let promptSum = parseInt(promptStr1) + parseInt(promptStr2);
+    alert('输入数值的和是:' + promptSum);
+  </script>
+</html>
