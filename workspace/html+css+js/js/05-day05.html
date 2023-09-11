@@ -18,6 +18,26 @@
     console.log(a, b);
 
     // 2.数组
-    
+    // 数组的创建方式 var arr=[] arr[0]=xxx/var arr=[x1,x2]/var arr=new Array(5) arr[0]=x1;arr[1]=x2;.../var arr = new Array(x1,x2,...,x5)
+    // 2.1 关联数组
+    var ly = [];
+    ly['语文'] = 75;
+    ly['数学'] = 89;
+    ly['英语'] = 69;
+    console.log(ly, ly['语文']); // [语文: 75, 数学: 89, 英语: 69] 75
+    ly.push('老胡');
+    console.log(ly); //['老胡', 语文: 75, 数学: 89, 英语: 69] 索引数组可以和关联数组混用
+
+    // 3.手写数组反序
+    //unshift(从首部插入新数组),arr2.reverse()
+    let arr2 = [8, 40, 31, 82, 44, 11];
+    for (let i in arr2) {
+      if (i >= arr2.length / 2) {
+        break;
+      }
+      // 使用ES6 解构赋值 [x,y]=[y,x]
+      [arr2[i], arr2[arr2.length - 1 - i]] = [arr2[arr2.length - 1 - i], arr2[i]];
+    }
+    console.log(arr2);
   </script>
 </html>

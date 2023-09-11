@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07</title>
+  </head>
+  <body></body>
+  <script>
+    // 1.二维数组
+    let arr1 = [];
+    arr1[0] = [12, 22, 33, 44];
+    arr1[1] = [33, 44, 55, 66];
+    arr1[2] = [77, 88, 99];
+    console.log(arr1);
+
+    // 2.字符串API
+    // 2.1 原始类型的字符串和引用类型的字符串
+    let str = 'Hello';
+    console.log(str.length); //5
+    // 引用类型的数据 具备功能(有方法可以操作)
+    let str1 = new String('老胡');
+    console.log(str1);
+    str1.yy = '颜值真的可以';
+    // 2.2 toLocaleLowerCase 转小写 toLocaleUpperCase 转大写 大小写转换
+    console.log(str.toLocaleLowerCase());
+    console.log(str.toLocaleUpperCase());
+    /* do {
+      let user = prompt('请输入验证码' + str);
+      if (user.toLocaleLowerCase() == user.toLocaleUpperCase()) {
+        alert('验证通过');
+        break;
+      } else {
+        alert('验证错误');
+      }
+    } while (true); */
+    // 2.3.unicode编码和解码 charCodeAt(i) 下标对应的字符串的unicode编码 fromCharCode(编码) 将unicode编码转为字符串
+    let str2 = 'abc锄禾日当午666';
+    console.log(str2.charCodeAt(1)); //b=>98
+    console.log(str2.charAt(1)); //下标对应的字符串
+    console.log(String.fromCharCode(98)); //98=>b
+
+    let myLove = '我稀罕你x1';
+    let all = '';
+    for (let i in myLove) {
+      all += myLove[i].charCodeAt();
+    }
+    console.log(all);
+    //2.4 字符串截取 substring(start,end) 起始下标和结束下标 substr(start,n) 起始下标和个数 strat 如果是负数或者是NaN 直接改为0
+    // substring(start,end)  截取之前会比较大小调整位置
+    let str4 = '床前明月光';
+    let newStr = str4.substring(1, 3);
+    console.log(str4); //床前明月光 不会改变数组
+    console.log(newStr); //前明
+    console.log(str4.substring(1, -1)); //床
+    console.log(str4.slice(1, -1)); //前明月
+    // substr
+    console.log(str4.substr(2, 2)); //明月
+    console.log(str4.substr(-2, 2)); //月光
+    // 2.5 indexOf(i) 查关键词下标 查不到返回-1
+    let str5 = 'u can u up , no can  no  bi bi';
+    console.log(str5.indexOf('up')); //8
+    // 2.6 lastIndexOf(i) 查关键词下标 匹配的是最尾部的
+    let str6 = 'http://www.baidu.com/img/login.png';
+    console.log(str6.lastIndexOf('.')); //30
+    let t = str6.substring(str6.lastIndexOf('.'));
+    console.log(t); //.plugins
+    // 2.7 search 查找关键词下标 支持正则
+    let str7 = '刚把裤子脱了，你吗的就回家吃饭，真n吗的扫兴，下次不带你一起出来游泳了';
+    console.log(str7.search('尼玛')); //-1
+    let code = str7.search(/[你n尼呢][吗妈码麻]/); //7
+    console.log(code);
+    // 2.8.match 检索内容 可以查多个，支持正则，默认返回的是一个数组 不会返回下标
+    let str8 = 'dao produce one, one produce two , two produce three, three produce all things';
+    let arr8 = str8.match(/produce/gi); //i 忽略大小写 g 查多个
+    console.log(arr8); //["produce", "produce", "produce", "produce"]
+    // 2.9. replace('检索的词','需要替换的内容') 替换 支持正则
+    /* let str9 = prompt('请输入想吐槽的内容');
+    alert(str9);
+    let newStr9 = str9.replace(/[操曹草槽]/, '*');
+    alert(newStr9); */
+    // 2.10 concat(str1,str2,...) 连接
+    let str10 = 'abc';
+    console.log(str10.concat('123')); //abc123
+    // 2.11 split('分隔符') 转换为数组
+    let str11 = 'red,pink,blue';
+    console.log(str11.split(',')); //['red', 'pink', 'blue']
+    // 3.找出以上字符串中出现次数最多的字符和出现的次数
+    let str31 = 'abasssddggggcgghssassssdd33333444434';
+    let obj31 = {};
+    for (let i in str31) {
+      if (!obj31[str31[i]]) {
+        obj31[str31[i]] = 1;
+      } else {
+        obj31[str31[i]]++;
+      }
+    }
+    console.log(obj31);
+    
+  </script>
+</html>

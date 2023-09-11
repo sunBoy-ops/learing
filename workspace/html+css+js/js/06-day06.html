@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06</title>
+  </head>
+  <body></body>
+  <script>
+    //  1.数组API
+    // 1.1 concat 拼接
+    // 用于拼接两个数组会生成新数组
+    let arr1 = [1, 2, 3];
+    let arr2 = [4, 5, 6];
+    let concatArr = arr1.concat(arr2);
+    console.log(concatArr, arr1, arr2);
+    // 1.2 join 将数组转化为字符串 不会修改原数组 返回字符串
+    let strArr = ['h', 'e', 'l', 'l', 'o'];
+    let str = strArr.join('-');
+    console.log(str); //h-e-l-l-o
+    // 默认值 ,
+    console.log(strArr.join()); //h,e,l,l,o
+    // 1.3 slice(start,end) 选取 start开始下标，end结束下标 含头不含尾
+    let arr3 = [1, 2, 3, 4, 5, 6, 7];
+    console.log(arr3.slice(0, 1)); //[1]
+    console.log(arr3.slice(2)); //[3, 4, 5, 6, 7]
+    console.log(arr3.slice()); //[1, 2, 3, 4, 5, 6, 7]
+    console.log(arr3.slice(-4, -2)); //[4, 5]
+    console.log(arr3.slice(-4)); //[4, 5, 6, 7]
+    // 1.4 splice(start,n,新值1,新值2) 修改数组 修改原数组 返回值也是数组
+    let arr4 = [1, 2, 3, 4, 5, 6, 7];
+    // start 可以是负值 n 可以是任何值，
+    // arr4.splice(0, 1); //[ 2, 3, 4, 5, 6, 7]
+    // arr4.splice(-1, 1); //[1, 2, 3, 4, 5, 6]
+    // arr4.splice(1, 8); //[1]
+    arr4.splice(1, 8, 1, 1); //[1, 1, 1]
+    console.log(arr4);
+    // 1.5 reverse 反序 会修改原数组 返回数组
+    let arr5 = [1, 2, 3, 4, 5, 6, 7];
+    // arr5.reverse(); //[7, 6, 5, 4, 3, 2, 1]
+    // 为了防止修改原数组可以先对数组进行复制
+    let reverseArr = arr5.slice().reverse(); //[7, 6, 5, 4, 3, 2, 1] (7) [1, 2, 3, 4, 5, 6, 7]
+    console.log(reverseArr, arr5);
+    // 1.6 sort 排序 修改原数组 返回数组 底层会转为string比较的是Unicode编码，不能正常排序
+    let arr6 = [5, 8, 2, 4, 7, 11];
+    // arr6.sort(); //[11, 2, 4, 5, 7, 8]
+    arr6.sort((a, b) => a - b); //升序
+    console.log(arr6);
+    // 1.7 indexOf()  获取数组元素索引 输入元素，找到则返回索引值，没找到返回-1
+    // lastIndexOf() 从后面开始查找 索引值不变
+    let arr7 = [1, 2, 3, 4, 5, 6, 7];
+    console.log(arr7.indexOf(1)); //0
+    console.log(arr7.indexOf(8)); //-1
+    console.log(arr7.lastIndexOf(1)); //0
+
+    // 2.修改数组的元素 push() 从末尾添加 unshift() 从首部添加 pop() 从末尾删除 shift() 从首部删除
+    let alterArr = [1, 2, 3, 4, 5, 6];
+    alterArr.push(7);
+    alterArr.unshift(0);
+    console.log(alterArr); //[0, 1, 2, 3, 4, 5, 6, 7]
+    alterArr.pop();
+    alterArr.shift();
+    console.log(alterArr); //[1, 2, 3, 4, 5, 6]
+  </script>
+</html>
