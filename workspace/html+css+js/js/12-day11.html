@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>day11</title>
+  </head>
+  <body>
+    <div>
+      <div>son1 <span>sonson1</span></div>
+      <div>
+        son2
+        <p>sonson2</p>
+      </div>
+    </div>
+    <button>添加</button>
+    <div id="d1">0</div>
+    <input type="text" value="123" />
+  </body>
+  <script>
+    // 1.按元素查找
+    // 父子类：firstElementChild 第一个孩子 lastElementChild 最后一个孩子 parentElement 父元素 children 所有的子元素
+    console.log(document.body.childNodes[1]);
+    let div = document.body.childNodes[1];
+    console.log(div.firstElementChild);
+    console.log(div.lastElementChild);
+    console.log(div.lastElementChild.parentElement);
+    console.log(div.children);
+    // 兄弟类 nextElementSibling 下一个兄弟元素 previousElementSibling 上一个兄弟元素
+    console.log(div.firstElementChild.nextElementSibling);
+    console.log(div.lastElementChild.previousElementSibling);
+
+    // 2.按html查找
+    // getElementById 按id属性查找 getElementsTagName 按照标签名 返回数组 getElementsByClassName 按照类名查找 getElementsByName 按照name查找
+
+    // 3.按照选择器查找
+    // querySelector(".class/#id/标签名/") 返回单个 querySelectorAll 返回的是一个数组组成的所有的元素
+
+    // 4.修改元素内容
+    // innerHTML 支持html标签解析 innerText 按照普通文本输出 value 获取输入框的值
+    document.querySelector('button').addEventListener('click', function add() {
+      let d1 = document.querySelector('#d1');
+      // 支持html标签解析
+      // d1.innerHTML = '<b>我是新来的</b>';
+
+      // 按照普通文本输出
+      // d1.innerText = '<b>我是新来的</b>';
+      // 直接按照文本输出
+      d1.textContent = '<b>我是新来的</b>';
+    });
+    console.log(document.querySelector('input').value); //123
+    console.log(document.querySelector('input').innerHTML); //空
+
+// 5.属性操作
+  </script>
+</html>

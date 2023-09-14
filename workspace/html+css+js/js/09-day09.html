@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09</title>
+  </head>
+  <body></body>
+  <script>
+    // 1.内置对象Math() 处理数学计算的方法
+    // ceil 上取整 floor 下取整
+    let num = 123.456;
+    let num1 = '123.abc';
+    console.log(Math.ceil(num));
+    console.log(Math.floor(num));
+    console.log(parseInt(num1));
+    // round 四舍五入 pow(x,y) x^y 指数方法 x底数 y指数 sqrt 开根号
+    console.log(Math.round(num));
+    console.log(Math.pow(2, 4));
+    console.log(Math.sqrt(81));
+    // max(x1,x2,...,xn) 输出最大值 min(x1,x2,...,xn) 输出最小值 random 生成0-1随机数(能取到0，不能取到1)
+    let arr = [12, 23, 5, 33, 2, 55];
+    console.log(Math.max(...arr));
+    console.log(Math.min(...arr));
+    console.log(Math.random());
+    // 生成{n,m}之间的随机数
+    function generationRandom(n, m) {
+      return Math.ceil(Math.random() * (m - n) + n);
+    }
+    console.log(generationRandom(10, 100));
+    // 生成6位数随机验证码
+    function verificationCode() {
+      let verificationCodeArr = [];
+
+      for (let i = 0; i < 6; i++) {
+        let generationRandom = Math.ceil(Math.random() * 9);
+        // 65-90 A-Z 97-122 a-z
+        let generationRandom2 = String.fromCharCode(Math.ceil(Math.random() * 25 + 65));
+        let generationRandom3 = String.fromCharCode(Math.ceil(Math.random() * 25 + 97));
+        let obj = { 1: generationRandom, 2: generationRandom2, 3: generationRandom3 };
+        let verificationCode = obj[Math.ceil(Math.random() * 3)];
+        verificationCodeArr.push(verificationCode);
+      }
+      return verificationCodeArr.join('');
+    }
+    let verificationCode2 = verificationCode();
+    console.log(verificationCode2);
+  </script>
+</html>

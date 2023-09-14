@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. 内置对象Date()
+    // 获取当前时间
+    let now = new Date();
+    console.log(now); //Wed Sep 13 2023 11:04:58 GMT+0800 (中国标准时间)
+    let now2 = new Date('2020-12-12 15:00:00');
+    console.log(now2); //Sat Dec 12 2020 15:00:00 GMT+0800 (中国标准时间)
+    // 获取毫秒数 当前的时间到元年之间的毫秒数
+    console.log(now.getTime()); //1694574473333
+    console.log(now.toString()); //Wed Sep 13 2023 11:07:53 GMT+0800 (中国标准时间)
+    console.log(now.toLocaleString()); //2023/9/13 11:09:39
+    console.log(now.toLocaleDateString()); //2023/9/13
+    console.log(now.toLocaleTimeString()); //11:09:39
+
+    console.log(now.getFullYear()); //年
+    console.log(now.getMonth()); //月
+    console.log(now.getDate()); //日
+    console.log(now.getDay()); //星期
+    console.log(now.getHours()); //时
+    console.log(now.getMinutes()); //分
+    console.log(now.getSeconds()); //秒
+  </script>
+</html>
