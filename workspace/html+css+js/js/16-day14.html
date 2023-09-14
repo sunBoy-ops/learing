@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>day14</title>
+  </head>
+  <body></body>
+  <script>
+    // 1.history对象:浏览器当前访问过的网页
+    // history.go(1) 前进一页 history.forword() history.go(-1) 后退一页 history.back() history.go(0) 刷新
+
+    // 2.location对象:保存当前的url的相关的信息
+    // 2.1 对象属性
+    console.log(location.hash); //返回#开始的URL
+    console.log(location.host); //返回主机名和当前URL的端口号 //127.0.0.1:5500
+    console.log(location.hostname); //返回当前url的主机名 //127.0.0.1
+    console.log(location.href); //返回完整的url //http://127.0.0.1:5500/workspace/html+css+js/js/16-day14.html
+    console.log(location.pathname); //返回url的路径部分 ///workspace/html+css+js/js/16-day14.html
+    console.log(location.port); //返回当前url的端口号 //5500
+    console.log(location.protocol); //返回当前URL的协议 //http:
+    console.log(location.search); //返回从?开始的URL
+    // 2.2 location对象方法
+    // assign() 加载新的文档 reload() 重新加载当前文档 replace() 用新的文档替换当前文档
+
+    // 3.navigator对象:保存浏览器相关的信息
+  </script>
+</html>

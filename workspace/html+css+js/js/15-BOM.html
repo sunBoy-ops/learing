@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM</title>
+  </head>
+  <body>
+    <h1>倒计时:</h1>
+    <div id="d1">60</div>
+    <button id="btn">点击</button>
+  </body>
+  <script>
+    // 1.BOM 浏览器对象模型
+    // 1.1 定义:专门用于操作浏览器窗口相关的API
+    // 1.2 获取常见的浏览器的信息
+    // 浏览器窗口的宽度 window.innerWidth 浏览器窗口的高度 window.innerHeight
+    // document.documentElement.clientWidth clienHeight
+    // window.onresize 监听window宽度实时变化
+    // 1.3 滚动条距离页面顶部的高度
+    // document.documentElement.scrollTop || window.screenTop
+
+    // 2.window常见事件
+    // 2.1 窗口加载事件
+    // 1.onload:等页面内容全部加载完毕,包含dom元素 图片flash css等
+    // 2.DOMContentLoaded是DOM加载完毕
+    // 3.onresize 是调整窗口大小加载事件,当触发时调用的处理函数
+
+    // 3.定时器:让程序没间隔一段事件去反复一直执行
+    // 1.定时器(周期性)
+    window.onload = function () {
+      function test() {
+        d1.innerHTML--;
+        if (d1.innerHTML <= 0) {
+          clearInterval(timer);
+          timer = null;
+          // window.close(); //关闭浏览器
+        }
+      }
+      // 2.启动定时器
+      var timer = setInterval(test, 100);
+    };
+    //一次性定时器
+    alert('5秒之后弹出信息');
+    function test2() {
+      alert('其实没啥好信息');
+    }
+    let timer2 = setTimeout(test2, 5000);
+    btn.onclick = function () {
+      alert('停止交易');
+      clearTimeout(timer2);
+    };
+  </script>
+</html>

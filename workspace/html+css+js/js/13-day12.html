@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>day12</title>
+  </head>
+  <body>
+    <div id="parent">
+      <div>老大</div>
+      <div>老二</div>
+      <div>老三</div>
+    </div>
+  </body>
+  <script>
+    // 1.修改样式
+    // ele.style.xxx="xxx" 复合的样式需要去掉 - 变为驼峰命名 如：backgroundColor
+
+    // 2.添加和删除元素
+    //  创建一个元素
+    let div = document.createElement('div');
+    // 赋予元素的内容和属性
+    div.innerHTML = '我是新来的';
+    div.style.color = 'yellow';
+    div.className = 'bgc';
+    // 添加到页面中
+    // 先找父元素
+    let parent = document.getElementById('parent');
+    // 在xxx之前插入元素 参数1：新元素 参数2：旧元素
+    // parent.insertBefore(div, parent.firstElementChild);
+    // 在末尾追加
+    parent.appendChild(div);
+    // 删除 parent.removeChild(parent.firstElementChild-需要删除的孩子)
+    // 替换 parent.replaceChild(div,parent.firstElementChild) 新元素 被替换的元素
+
+    // 3. 修改内部样式
+    // 获取内部样式表 document.styleSheets[0]
+    // 选择器对应的样式 document.styleSheets[0].cssRules[1]
+  </script>
+</html>

@@ -2528,7 +2528,7 @@ document.documentElement //返回html元素对象
 
 ​	    ele.attributes    查找所有的属性
 
-​	    **ele.getAttribute("属性名")    获取ele元素的属性名**
+​	    **ele.getAttribute("属性名")    获取ele元素的属性值**
 
 ​	    **ele.setAttribute("属性名","值")    设置ele元素的属性名对应的值**
 
@@ -2636,16 +2636,16 @@ d1.dataset.score="888" //修改属性值
 
 #### 6、常见的鼠标事件
 
-| 鼠标事件     | 触发条件         |
-| ------------ | ---------------- |
-| onclick      | 鼠标点击左键触发 |
-| onmouseover  | 鼠标经过触发     |
-| onmouseout   | 鼠标离开触发     |
-| onfocus      | 获得鼠标焦点触发 |
-| onblur       | 失去鼠标焦点触发 |
-| onmousermove | 鼠标移动触发     |
-| onmouseup    | 鼠标弹起触发     |
-| onmousedown  | 鼠标按下触发     |
+| 鼠标事件    | 触发条件         |
+| ----------- | ---------------- |
+| onclick     | 鼠标点击左键触发 |
+| onmouseover | 鼠标经过触发     |
+| onmouseout  | 鼠标离开触发     |
+| onfocus     | 获得鼠标焦点触发 |
+| onblur      | 失去鼠标焦点触发 |
+| onmousemove | 鼠标移动触发     |
+| onmouseup   | 鼠标弹起触发     |
+| onmousedown | 鼠标按下触发     |
 
 
 
@@ -3047,7 +3047,7 @@ eventTarget.addEventListener('click',function(event){
 
   **阻止事件冒泡**
 
-  - 标准写法：利用事件对象里面的soptPropagation()方法
+  - 标准写法：利用事件对象里面的stopPropagation()方法
 
     ```js
     e.stopPropagation()
@@ -3167,7 +3167,7 @@ eventTarget.addEventListener('click',function(event){
 
 ​		浏览器窗口的宽度:   window.innerWidth  
 
-​		浏览器窗口第高度    window.innerHeight
+​		浏览器窗口的高度    window.innerHeight
 
 ​		或者是  document.documentElement.clientWidth 宽度(考虑兼容)
 

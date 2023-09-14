@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>day16</title>
+
+    <style lang="css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #d1 {
+        width: 100px;
+        height: 100px;
+        border: 10px solid #a043a1;
+        margin: 30px;
+        padding: 10px;
+      }
+      #parent {
+        width: 400px;
+        height: 300px;
+        overflow: auto;
+        border: 1px solid #ccc;
+      }
+      #son {
+        width: 600px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">获取</button>
+    <div id="d1"></div>
+    <div id="parent">
+      <div id="son">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet aut, dolorum inventore iste magni possimus quaerat voluptatum. Aliquam blanditiis consequuntur eveniet id magnam modi nemo
+        nihil officia rem similique! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias commodi dolorem enim facere similique veritatis? Atque delectus error est et eveniet, ex id libero
+        natus nostrum quas quia quo reiciendis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci animi architecto commodi culpa cumque dolorum eligendi illum natus, nemo
+        nostrum omnis placeat quae quam quis tempora tenetur. Perspiciatis, voluptates!
+      </div>
+    </div>
+  </body>
+  <script>
+    // 1.offset系列 偏移量
+    // ele.offsetParent 返回作为该元素带有定位的父级元素 默认body
+    // offsetTop 返回元素相对带有定位父元素上方的偏移 offsetLeft
+    // offsetWidth 当前元素的宽 (内容+border+padding)
+    btn.addEventListener('click', function () {
+      console.log(d1.offsetParent); //body
+      console.log(d1.offsetTop); //52
+      console.log(d1.offsetLeft); //30
+      console.log(d1.offsetWidth); //100+(10+10)*2
+      console.log(d1.offsetHeight); //100+(10+10)*2
+    });
+
+    // 2.scroll系列 获取滚动条的距离
+    // parent.scrollLeft 滚动条左边滚动的距离 scrollTop 滚动条顶部滚动的距离
+    // parent.scrollWidth 里面元素的宽度 .scrollHeight 高度
+    // 获取页面 document.documentElement.scrollTop document.body.scrollTop window.pageXOffset
+    let parent = document.getElementById('parent');
+    parent.addEventListener('scroll', function () {
+      console.log(parent.scrollTop); //变化
+      console.log(parent.scrollLeft); //变化
+      console.log(parent.scrollWidth); //600 里面的
+      console.log(parent.scrollHeight); //400 里面的
+    });
+
+    // 3.client 系列
+    // clientLeft 左边边框的宽度 clientTop 上边边框 clientWidth 宽度(内容+内边距) clientHeight 高度
+    btn.addEventListener('click', function () {
+      console.log(d1.clientTop); //10
+      console.log(d1.clientLeft); //10
+      console.log(d1.clientWidth); //100+(10)*2
+      console.log(d1.clientHeight); //100+(10)*2
+    });
+
+    // 4.鼠标三对儿
+    // e.screenX,e.srceenY 距离电脑显示屏左上角的距离 (x,y)
+    // e.clientX,e.clientY 距离文档窗口左上角的距离
+    // e.offsetX,e.offsetY 距离当前点击的元素的左上角的距离
+  </script>
+</html>

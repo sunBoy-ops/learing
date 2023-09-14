@@ -4,6 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>day11</title>
+    <style>
+      .orange span {
+        display: inline-block;
+        border: 1px solid red;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: red;
+        margin: 4px;
+        cursor: pointer;
+      }
+      .orange .blue {
+        border-color: blue;
+        color: blue;
+      }
+    </style>
   </head>
   <body>
     <div>
@@ -16,6 +34,12 @@
     <button>添加</button>
     <div id="d1">0</div>
     <input type="text" value="123" />
+    <div id="d2" class="bgc">隔壁老徐</div>
+    <button id="btn">移除</button>
+    <button id="btn2">移除2</button>
+    <div class="orange">
+      <span class="red"></span><span class="red"></span><span class="red"></span><span class="red"></span><span class="red"></span><span class="red"></span><span class="red"></span>
+    </div>
   </body>
   <script>
     // 1.按元素查找
@@ -51,6 +75,51 @@
     console.log(document.querySelector('input').value); //123
     console.log(document.querySelector('input').innerHTML); //空
 
-// 5.属性操作
+    // 5.属性操作
+    // 5.1 核心dom属性
+    // 查找所有的属性
+    console.log(d2.attributes);
+    // 获取元素的属性值
+    console.log(d2.getAttribute('class')); //bgc
+    // 设置元素的属性名对应的值
+    console.log(d2.setAttribute('class', 'bgc1')); //bgc=>bgc1
+    // 判断有没有对应的属性名
+    console.log(d2.hasAttribute('class')); //true
+    // 删除元素对应的属性名
+    document.getElementById('btn').addEventListener('click', function () {
+      // 移除d2的属性名
+      d2.removeAttribute('class');
+      d2.setAttribute('xu', '19');
+    });
+    // 5.2 HTML DOM属性
+    // 获取属性 xxx.属性名
+    console.log(d2.className); //bgc1
+    // 设置修改 xxx.属性名=新值
+    d2.className = 'bgc2';
+    // 删除 xxx.属性名=""
+    document.getElementById('btn2').addEventListener('click', function () {
+      d2.dataset.hu = '18'; //data-hu="18"
+      d2.className = ''; //class
+    });
+
+    // 6.开关的案例
+    let randomOrange = Math.ceil(Math.random() * 6);
+    let orangeRed = document.querySelectorAll('.orange>span');
+    console.log(orangeRed);
+    orangeRed[randomOrange].className = 'blue';
+    for (let i in orangeRed) {
+      let randomRed = Math.ceil(Math.random() * 32 + 1);
+      let randomBlue = Math.ceil(Math.random() * 15 + 1);
+      if (orangeRed[i].className == 'red') {
+        orangeRed[i].innerHTML = randomRed;
+      } else {
+        orangeRed[i].innerHTML = randomBlue;
+      }
+    }
+    for (let ele of orangeRed) {
+      ele.addEventListener('click', function (e) {
+        console.log(e.target);
+      });
+    }
   </script>
 </html>
