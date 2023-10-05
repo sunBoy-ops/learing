@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06-盒模型</title>
+    <style>
+      .content_box {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        margin: 10px;
+        border: 5px solid blue;
+        background-color: red;
+        /* 设置的宽度就是content内容的宽度 */
+        box-sizing: content-box;
+      }
+      .border_box {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        margin: 10px;
+        border: 5px solid blue;
+        background-color: red;
+        /*  */
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 盒模型宽度：标准：width+左右padding+左右border 怪异：width -->
+    <!-- 标准盒模型 -->
+    <div class="content_box">content-box</div>
+    <!-- 怪异盒模型 -->
+    <div class="border_box">border-box</div>
+  </body>
+</html>

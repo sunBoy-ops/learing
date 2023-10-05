@@ -2672,7 +2672,88 @@ d1.dataset.score="888" //修改属性值
 </script>
 ```
 
-#### 2、添加和删除
+#### 2、classList 操作元素类名
+
+classList 是 Element 接口的一个属性，其返回值是一个 DOMTokenList 对象，该对象表示当前元素的类名列表。我们可以通过以下方式来获取一个元素的 classList：
+
+```js
+const element = document.getElementById('myElement');
+const classList = element.classList;
+```
+
+**add方法**
+
+add方法用于元素添加一个或多个类名
+
+```js
+element.classList.add('active','visible','highlight')
+```
+
+**remove方法**
+
+remove 方法用于从元素中删除一个或多个类名。
+
+```js
+element.classList.remove('active','visible','highlight')
+```
+
+**[toggle](https://so.csdn.net/so/search?q=toggle&spm=1001.2101.3001.7020)方法**
+
+toggle 方法用于在元素中切换一个类名的状态。如果元素中已经存在该类名，则该类名将被删除；如果元素中不存在该类名，则该类名将被添加。
+
+```js
+element.classList.toggle('active');
+```
+
+我们还可以在 toggle 方法中传入一个布尔值作为第二个参数，用于指定是否强制添加或删除类名。
+
+```js
+element.classList.toggle('active', true);
+```
+
+**contains方法**
+
+contains 方法用于检查元素中是否包含指定的类名。存在返回true，否则返回false
+
+```js
+const hasActiveClass = element.classList.contains('active');
+```
+
+**replace方法**
+
+replace 方法用于替换元素中的一个类名为另一个类名。
+
+```js
+element.classList.replace('oldClass', 'newClass');
+```
+
+**item方法**
+
+item 方法用于获取元素类名列表中指定索引位置的类名。
+
+```js
+const secondClass = element.classList.item(1);
+```
+
+**length用法**
+
+length 属性用于获取元素类名列表的长度。
+
+```js
+const classListLength = element.classList.length;
+```
+
+**forEach方法**
+
+forEach 方法用于遍历元素的类名列表，并对每个类名执行指定的操作。
+
+```js
+element.classList.forEach(className => {
+  console.log(className);
+});
+```
+
+#### 3、添加和删除
 
 ​		1、创建一个元素 
 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20-继承</title>
+  </head>
+  <body></body>
+  <script>
+    // 1.原型继承
+    /* function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.say = function () {
+      console.log('人类会说话');
+    };
+
+    function Student(name, age, className) {
+      this.name = name;
+      this.age = age;
+      this.className = className;
+    }
+
+    Student.prototype = new Person();
+    Student.prototype.study = function () {
+      console.log('学生在学习');
+    };
+
+    let stu = new Student('张三', 18, '小虾米');
+    console.log(stu);
+    console.log(stu.__proto__);
+    stu.say(); */
+
+    // 2.组合继承
+    /* function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.say = function () {
+      console.log('人类会说话');
+    };
+
+    function Student(name, age, className) {
+      Person.call(this, name, age);
+      this.className = className;
+    }
+
+    Student.prototype = new Person();
+    Student.prototype.study = function () {
+      console.log('学生在学习');
+    };
+
+    let stu = new Student('张三', 18, '小虾米');
+    console.log(stu);
+    console.log(stu.__proto__);
+    stu.say(); */
+
+    // 3.寄生组合继承
+    /* function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.say = function () {
+      console.log('人类会说话');
+    };
+
+    function Student(name, age, className) {
+      this.name = name;
+      this.age = age;
+      this.className = className;
+    }
+
+    Student.prototype = Object.create(new Person());
+    Student.prototype.study = function () {
+      console.log('学生在学习');
+    };
+
+    let stu = new Student('张三', 18, '小虾米');
+    console.log(stu);
+    console.log(stu.__proto__);
+    stu.say(); */
+
+    // 4.es6 class 实现继承 extends
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+        console.log('Person构造函数执行了');
+      }
+      jump() {
+        console.log('会跳');
+      }
+    }
+
+    class Teacher extends Person {
+      constructor(name, age, lesson) {
+        super(name, age);
+        this.lesson = lesson;
+      }
+      sayHello() {
+        console.log('会打招呼');
+      }
+    }
+
+    let teacher1 = new Teacher('zs', 17, '体育');
+    console.log(teacher1);
+  </script>
+</html>

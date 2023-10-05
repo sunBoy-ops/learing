@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人信息</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="my-nav">
+        <ul>
+          <li class="li-bg">基本设置</li>
+          <li>安全设置</li>
+          <li>账号绑定</li>
+          <li>新消息通知</li>
+        </ul>
+      </div>
+      <div class="my-section">
+        <div class="section-left">
+          <span class="span-title">基本设置</span>
+          <form action="javascript:;" class="form-meassage">
+            <label for="email">邮箱</label>
+            <input type="email" name="email" id="email" />
+            <label for="name">昵称</label>
+            <input type="text" name="name" id="name" />
+            <span class="radio-title">
+              性别
+            </span>
+            <input type="radio" name="sex" id="sex">
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="lib/form-serialize.js"></script>
+  <script src="js/index.js"></script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内存泄漏</title>
+  </head>
+  <body></body>
+  <script>
+    function cycle() {
+      let o1 = {};
+      let o2 = {};
+      o1.a = o2;
+      o2.a = o1;
+      console.log(o1, o2);
+      return 'Cycle reference';
+    }
+    cycle();
+
+    // 闭包
+    function fn() {
+      let count = 0;
+
+      function add() {
+        count++;
+        console.log('fn函数被调用了' + count + '次');
+      }
+      console.log(count);
+      return add;
+    }
+    const addFn = fn();
+    addFn();
+    addFn();
+    addFn();
+
+    const fnSum = (function () {
+      let count = 0;
+      function sum() {
+        count++;
+        console.log(`第${count}次调用sum函数`);
+      }
+      console.log(count);
+      return sum;
+    })();
+    fnSum();
+    fnSum();
+  </script>
+</html>

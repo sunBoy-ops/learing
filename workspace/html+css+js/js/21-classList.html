@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>classList用法</title>
+  </head>
+  <body>
+    <div class="model model-bgc model-position">
+      <ul>
+        <li class="open" label="">
+          <span></span>
+        </li>
+        <label for=""></label>
+        <li class="open">
+          <label for=""></label>
+          <span></span>
+        </li>
+        <li class="open">
+          <label for=""></label>
+          <span></span>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    let menu = document.querySelector('div').classList;
+    console.log(menu);
+    function createMenu(menuData) {
+      const menuEl = document.createElement('ul');
+
+      menuData.forEach((item) => {
+        const itemEl = document.createElement('li');
+        const labelEl = document.createElement('span');
+        labelEl.innerText = item.label;
+        console.log(item.label);
+        itemEl.appendChild(labelEl);
+
+        if (item.children.length > 0) {
+          labelEl.addEventListener('click', () => {
+            if (itemEl.classList.contains('open')) {
+              itemEl.classList.remove('open');
+              itemEl.removeChild(itemEl.lastChild);
+            } else {
+              itemEl.classList.add('open');
+              const submenuEl = createMenu(item.children);
+              itemEl.appendChild(submenuEl);
+            }
+          });
+        }
+
+        menuEl.appendChild(itemEl);
+      });
+
+      return menuEl;
+    }
+
+    const menuEl = createMenu(menu);
+    document.body.appendChild(menuEl);
+  </script>
+</html>
