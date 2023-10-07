@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-xhr</title>
+  </head>
+  <body></body>
+  <script>
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://hmajax.itheima.net/api/area');
+    /* xhr.send();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          console.log(xhr.response);
+        }
+      }
+    }; */
+    xhr.addEventListener('loadend', () => {
+      console.log(xhr.response);
+    });
+    xhr.send();
+  </script>
+</html>
